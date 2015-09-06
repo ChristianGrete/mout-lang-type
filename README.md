@@ -5,9 +5,6 @@
 
 > An extension to [mout](http://moutjs.com)/[lang](http://moutjs.com/docs/latest/lang.html) utilities for nerds
 
-## Note
-This branch does not contain any source files or artifacts as it is in its initial state. Please switch the branch to `develop` to checkout the current development version.
-
 ## License
 [MIT](LICENSE.md) © [Christian Grete](https://christiangrete.com)
 - [GitHub](https://github.com/ChristianGrete)
