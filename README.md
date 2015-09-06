@@ -5,7 +5,20 @@
 
 > An extension to [mout](http://moutjs.com)/[lang](http://moutjs.com/docs/latest/lang.html) utilities for nerds
 
+## Getting started
+
+### Installation
+Install this extension as a dependency to your project using [Bower](http://bower.io):
+```sh
+$ bower install --save mout-lang-type
+```
+Alternatively, this it is also available using [npm](https://www.npmjs.org):
+```sh
+$ npm install --save mout-lang-type
+```
+
 ## License
+
 [MIT](LICENSE.md) © [Christian Grete](https://christiangrete.com)
 - [GitHub](https://github.com/ChristianGrete)
 - [npm](https://www.npmjs.com/~christiangrete)
