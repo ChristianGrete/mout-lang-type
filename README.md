@@ -12,7 +12,7 @@ Install this extension as a dependency to your project using [Bower](http://bowe
 ```sh
 $ bower install --save mout-lang-type
 ```
-Alternatively, this it is also available using [npm](https://www.npmjs.org):
+Alternatively, it is also available using [npm](https://www.npmjs.org):
 ```sh
 $ npm install --save mout-lang-type
 ```
