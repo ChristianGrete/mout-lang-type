@@ -1,7 +1,7 @@
 define(
   [
     'mout/lang/kindOf'
-  ]
+  ],
   function ( kindOf ) {
     var
       _prototype = String.prototype,
