@@ -6,7 +6,9 @@
       "name": "Christian Grete"
     }
   ],
-  "dependencies": {},
+  "dependencies": {
+    "mout": "~0.11.0"
+  },
   "description": "An extension to mout/lang utilities",
   "devDependencies": {},
   "homepage": "https://github.com/ChristianGrete/mout-lang-type",
