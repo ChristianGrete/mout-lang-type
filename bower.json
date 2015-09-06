@@ -10,7 +10,16 @@
   "description": "An extension to mout/lang utilities",
   "devDependencies": {},
   "homepage": "https://github.com/ChristianGrete/mout-lang-type",
-  "ignore": [],
+  "ignore": [
+    ".DS_Store",
+    ".gitignore",
+    ".npmignore",
+    "bin/",
+    "node_modules/",
+    "npm-debug.log",
+    "package.json",
+    "src/"
+  ],
   "keywords": [
     "AMD",
     "camelCase",
