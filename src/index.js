@@ -2,7 +2,7 @@ define(
   function ( require ) {
     return {
         lang: require('./lang'),
-        VERSION: '0.0.0'
+        VERSION: '0.0.1'
       };
   }
 );
