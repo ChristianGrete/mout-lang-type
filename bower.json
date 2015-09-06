@@ -40,7 +40,7 @@
   "license": "MIT",
   "main": "dist/index.js",
   "name": "mout-lang-type",
-  "private": true,
+  "private": false,
   "repository": {
     "type": "git",
     "url": "git://github.com/ChristianGrete/mout-lang-type.git"
