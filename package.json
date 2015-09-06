@@ -16,8 +16,13 @@
     }
   ],
   "description": "An extension to mout/lang utilities",
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "mout": "^0.11.0"
+  },
+  "devDependencies": {
+    "bower": "^1.5.2",
+    "npm": "^2.14.2"
+  },
   "files": [
     "dist/**/*.js"
   ],
