@@ -1,0 +1,38 @@
+{
+  "authors": [
+    {
+      "email": "webmaster@christiangrete.com",
+      "homepage": "https://christiangrete.com",
+      "name": "Christian Grete"
+    }
+  ],
+  "dependencies": {},
+  "description": "An extension to mout/lang utilities",
+  "devDependencies": {},
+  "homepage": "https://github.com/ChristianGrete/mout-lang-type",
+  "ignore": [],
+  "keywords": [
+    "AMD",
+    "camelCase",
+    "CommonJS",
+    "isKind",
+    "isType",
+    "kindOf",
+    "lang",
+    "lowercase",
+    "mout",
+    "RequireJS",
+    "type",
+    "typeOf",
+    "utilities"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "name": "mout-lang-type",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ChristianGrete/mout-lang-type.git"
+  },
+  "version": "0.0.0"
+}
