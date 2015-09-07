@@ -43,7 +43,7 @@
     "utilities"
   ],
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "dist/amd/index.js",
   "name": "mout-lang-type",
   "private": true,
   "repository": {
