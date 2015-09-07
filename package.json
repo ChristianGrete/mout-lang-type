@@ -22,6 +22,8 @@
   },
   "devDependencies": {
     "bower": "^1.5.2",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
     "npm": "^2.14.2"
   },
   "files": [
