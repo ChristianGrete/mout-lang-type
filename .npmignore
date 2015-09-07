@@ -1,7 +1,13 @@
+.bowerrc
 .DS_Store
+.editorconfig
 .gitignore
+.npmignore
+.tm_properties
 bin/
 bower_components/
 bower.json
+config/
+Gruntfile.js
 npm-debug.log
 src/
