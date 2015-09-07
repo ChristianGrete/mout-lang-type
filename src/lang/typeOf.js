@@ -9,12 +9,10 @@ define(
           'Date',
           'Error',
           'Function',
-          'Null',
           'Number',
           'Object',
           'RegExp',
-          'String',
-          'Undefined'
+          'String'
         ],
       _conversionObject = {},
       _index = 0,
