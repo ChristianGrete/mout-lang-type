@@ -21,6 +21,17 @@ module.exports = function ( $grunt ) {
 
       _config = {
           'cfg': _$grunt__file__readJSON( _URL__GRUNT_CONFIG_FILE ),
+          'clean': {
+              'dist': '<%= cfg.PATH__DIST %>'
+            },
+          'copy': {
+              'src': {
+                  'cwd': '<%= cfg.PATH__SRC %>',
+                  'dest': '<%= cfg.PATH__DIST__AMD %>',
+                  'expand': true,
+                  'src': '<%= cfg.GLOB__JS__RECURSIVE %>'
+                }
+            },
           'jsonlint': {
               'config': '<%= cfg.PATH__CONFIG %>/<%= cfg.GLOB__JSON__RECURSIVE %>',
               'manifests': '<%= cfg.PATH__ROOT %>/<%= cfg.GLOB__MANIFESTS %>'
@@ -29,6 +40,11 @@ module.exports = function ( $grunt ) {
         },
 
       _tasks = {
+          'build': [
+              'default',
+              'clean',
+              'copy'
+            ],
           'default': [
               'jsonlint'
             ]
