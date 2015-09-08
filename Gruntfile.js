@@ -16,6 +16,7 @@ module.exports = function ( $grunt ) {
 
       _plugins = [
           'grunt-contrib-*',
+          'grunt-easy-nodefy',
           'grunt-jsonlint'
         ],
 
@@ -36,6 +37,14 @@ module.exports = function ( $grunt ) {
               'config': '<%= cfg.PATH__CONFIG %>/<%= cfg.GLOB__JSON__RECURSIVE %>',
               'manifests': '<%= cfg.PATH__ROOT %>/<%= cfg.GLOB__MANIFESTS %>'
             },
+          'nodefy': {
+              'src': {
+                  'cwd': '<%= cfg.PATH__SRC %>',
+                  'dest': '<%= cfg.PATH__DIST__CJS %>',
+                  'expand': true,
+                  'src': '<%= cfg.GLOB__JS__RECURSIVE %>'
+                }
+            },
           'pkg': _$grunt__file__readJSON( _URL__NPM_MANIFEST_FILE )
         },
 
@@ -43,11 +52,12 @@ module.exports = function ( $grunt ) {
           'build': [
               'default',
               'clean',
-              'copy'
+              'copy',
+              'nodefy'
             ],
           'default': [
               'jsonlint'
-            ]
+            ],
         };
 
     _timeGrunt( $grunt ),
