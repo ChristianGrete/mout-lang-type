@@ -1,6 +1,7 @@
 define(
   function () {
     var
+      _argumentsIsObject,
       _builtInTag,
       _builtInTags = [
           'Arguments',
@@ -15,7 +16,9 @@ define(
           'String'
         ],
       _conversionObject = {},
+      _hasOwnProperty,
       _index = 0,
+      _isArguments,
       _length = _builtInTags.length,
       _prototype = String.prototype,
       _charAt = _prototype.charAt,
@@ -43,6 +46,23 @@ define(
               );
     }
 
+    if(
+      _argumentsIsObject = _conversionObject[ _toString.call(arguments) ] !== 'arguments'
+    ) {
+      _hasOwnProperty = _conversionObject.hasOwnProperty,
+
+      _isArguments = function ( $mixed ) {
+          return (
+              _hasOwnProperty.call(
+                $mixed,
+                'callee'
+              ) ?
+                'arguments' :
+                  false
+            );
+        };
+    }
+
     return function typeOf ( $mixed ) {
         if( $mixed == null ) {
           return $mixed + '';
@@ -52,8 +72,9 @@ define(
             typeof $mixed === 'object'
               || typeof $mixed === 'function' ?
                 (
-                  _conversionObject[ _toString.call($mixed) ]
-                    || 'object'
+                  ( _argumentsIsObject && _isArguments() )
+                    || _conversionObject[ _toString.call($mixed) ]
+                      || 'object'
                 ) :
                   typeof $mixed
           );
