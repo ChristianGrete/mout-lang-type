@@ -28,6 +28,7 @@
     "grunt-jsonlint": "^1.0.4",
     "grunt-register-tasks": "^1.0.0",
     "load-grunt-tasks": "^3.2.0",
+    "nodefy": "^0.2.2",
     "npm": "^2.14.2",
     "time-grunt": "^1.2.1"
   },
