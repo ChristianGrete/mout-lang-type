@@ -45,7 +45,7 @@
   "license": "MIT",
   "main": "dist/amd/index.js",
   "name": "mout-lang-type",
-  "private": true,
+  "private": false,
   "repository": {
     "type": "git",
     "url": "git://github.com/ChristianGrete/mout-lang-type.git"
