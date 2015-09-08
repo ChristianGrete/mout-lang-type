@@ -52,7 +52,7 @@
     "utilities"
   ],
   "license": "MIT",
-  "main": "dist/amd/index.js",
+  "main": "dist/cjs/index.js",
   "maintainers": [
     {
       "email": "webmaster@christiangrete.com",
