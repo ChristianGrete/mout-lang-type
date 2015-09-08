@@ -19,6 +19,10 @@ Alternatively, it is also available using [npm](https://www.npmjs.org):
 $ npm install --save mout-lang-type
 ```
 
+## Policy
+
+This is communist software. It is crafted with heart and soul to the best of the author’s knowledge and belief not for profit but to satisfy the concrete needs. Do whatever you want with it (as long as you keep the author’s copyright notice in all copies or substantial portions of it included) for free. Imagine how the world could be if others would produce and distribute their products for the same benefits and ask yourself why they’re actually not.
+
 ## License
 
 This software is licensed under [MIT License](LICENSE.md).
