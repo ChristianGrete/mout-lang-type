@@ -4,6 +4,7 @@
   "GLOB__JSON": "*.json",
   "GLOB__JSON__RECURSIVE": "**/*.json",
   "GLOB__MANIFESTS": "{bower,package}.json",
+  "GLOB__NODEFY_TASK": "nodefy.js",
   "PATH__BIN": "./bin",
   "PATH__BOWER_COMPONENTS": "./bower_components",
   "PATH__CONFIG": "./config",
@@ -12,5 +13,6 @@
   "PATH__DIST__CJS": "./dist/cjs",
   "PATH__NODE_MODULES": "./node_modules",
   "PATH__ROOT": ".",
-  "PATH__SRC": "./src"
+  "PATH__SRC": "./src",
+  "PATH__TASKS": "./tasks"
 }
