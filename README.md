@@ -21,6 +21,8 @@ $ npm install --save mout-lang-type
 
 ## License
 
+This software is licensed under [MIT License](LICENSE.md).
+
 [MIT](LICENSE.md) © [Christian Grete](https://christiangrete.com)
 - [GitHub](https://github.com/ChristianGrete)
 - [npm](https://www.npmjs.com/~christiangrete)
