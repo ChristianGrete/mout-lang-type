@@ -68,8 +68,17 @@ module.exports = function ( $grunt ) {
               'commit': 'git commit -m "release(v<%= pkg.version %>): distribute"',
               'tag': 'git tag -a v<%= pkg.version %> -m "<%= grunt.option(\'tagMessage\') %>"'
             },
+          'jshint': {
+              'options': {
+                  'jshintrc': true
+                },
+              'src': '<%= cfg.PATH__SRC %>/<%= cfg.GLOB__JS__MANIFESTS %>'
+            },
           'jsonlint': {
-              'config': '<%= cfg.PATH__CONFIG %>/<%= cfg.GLOB__JSON__RECURSIVE %>',
+              'config': [
+                  '<%= cfg.PATH__CONFIG %>/<%= cfg.GLOB__JSON__RECURSIVE %>',
+                  '<%= cfg.PATH__ROOT %>/<%= cfg.GLOB__JSHINTRC %>'
+                ],
               'manifests': '<%= cfg.PATH__ROOT %>/<%= cfg.GLOB__MANIFESTS %>'
             },
           'modify_json': {
@@ -125,7 +134,8 @@ module.exports = function ( $grunt ) {
               'string-replace'
             ],
           'default': [
-              'jsonlint'
+              'jsonlint',
+              'jshint'
             ]
         };
 
