@@ -2,6 +2,10 @@
 
 cd "$( dirname "$0" )/..";
 
+echo "\r\nPlease specify the version sequence to bump (e.g. major, minor or patch):";
+
+read version && grunt bump:$version;
+
 git checkout master && git merge develop;
 
 hash="$( git rev-parse --verify HEAD )";
