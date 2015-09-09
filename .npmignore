@@ -2,6 +2,7 @@
 .DS_Store
 .editorconfig
 .gitignore
+.jshintrc
 .npmignore
 .tm_properties
 bin/
