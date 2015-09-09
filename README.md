@@ -19,6 +19,36 @@ Alternatively, it is also available using [npm](https://www.npmjs.org):
 $ npm install --save mout-lang-type
 ```
 
+### Usage
+You can load and use this extension as a module using the AMD or CommonJS API:
+```js
+// Load the overall module:
+var
+  _moutLangType = require('mout-lang-type');
+
+// Use the overall module:
+_moutLangType.lang.typeOf( null ) === 'null'; // true
+_moutLangType.lang.isType( null, 'object' ); // false
+
+// Load all lang utilities:
+var
+  _lang = require('mout-lang-type/lang');
+
+// Use the lang utilities:
+_lang.typeOf( new Date ) === 'date'; // true
+_lang.isType( new String('foo'), 'string' ); // true
+
+// Load the individual utilities:
+var
+  _isType = require('mout-lang-type/lang/isType'),
+  _typeOf = require('mout-lang-type/lang/typeOf');
+
+// Use the individual utilities:
+_typeOf( [1, 2, 3] ) === 'array'; // true;
+_isKind( new RegExp, 'regExp') // true;
+```
+Keep in mind that the module’s name `mout-lang-type` in AMD is actually just the module’s root directory and can differ from the example above depending on your deployed scripts directory structure.
+
 ## Policy
 
 This is communist software. It is crafted with heart and soul to the best of the author’s knowledge and belief: Not for profit but to satisfy the concrete needs. Do whatever you want with it (as long as you keep the author’s copyright notice in all copies or substantial portions of it included) for free. Imagine how the world could be if others would produce and distribute their products for the same benefits and ask yourself why they’re actually not.
