@@ -20,6 +20,7 @@ module.exports = function ( $grunt ) {
           'grunt-easy-nodefy',
           'grunt-exec',
           'grunt-jsonlint',
+          'grunt-modify-json',
           'grunt-string-replace'
         ],
 
@@ -61,6 +62,19 @@ module.exports = function ( $grunt ) {
               'config': '<%= cfg.PATH__CONFIG %>/<%= cfg.GLOB__JSON__RECURSIVE %>',
               'manifests': '<%= cfg.PATH__ROOT %>/<%= cfg.GLOB__MANIFESTS %>'
             },
+          'modify_json': {
+              'manifests': {
+                  'files': {
+                      '<%= cfg.PATH__ROOT %>': '<%= cfg.PATH__ROOT %>/<%= cfg.GLOB__MANIFESTS %>'
+                    },
+                  'options': {
+                      'add': true,
+                      'fields': {
+                          'private': false
+                        }
+                    }
+                }
+            },
           'nodefy': {
               'src': {
                   'cwd': '<%= cfg.PATH__SRC %>',
@@ -98,11 +112,11 @@ module.exports = function ( $grunt ) {
               'clean',
               'copy',
               'nodefy',
-              'string-replace:src'
+              'string-replace'
             ],
           'default': [
               'jsonlint'
-            ],
+            ]
         };
 
     _timeGrunt( $grunt ),
