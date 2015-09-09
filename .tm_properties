@@ -1,4 +1,4 @@
-include = "{$include,.bowerrc,.editorconfig,.git*,.npmignore,.tm_properties}"
+include = "{$include,.bowerrc,.editorconfig,.git*,.npmignore,.npmrc,.tm_properties}"
 invisiblesMap = " ·\n¶\t›"
 projectDirectory = '$CWD'
 softWrap = true
