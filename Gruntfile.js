@@ -18,6 +18,7 @@ module.exports = function ( $grunt ) {
           'grunt-bump',
           'grunt-contrib-*',
           'grunt-easy-nodefy',
+          'grunt-exec',
           'grunt-jsonlint',
           'grunt-string-replace'
         ],
@@ -51,6 +52,10 @@ module.exports = function ( $grunt ) {
                   'expand': true,
                   'src': '<%= cfg.GLOB__JS__RECURSIVE %>'
                 }
+            },
+          'exec': {
+              'commit': 'git commit -m "release(v<%= pkg.version %>): distribute"',
+              'tag': 'git tag -a v<%= pkg.version %> -m "<%= grunt.option(\'tagMessage\') %>"'
             },
           'jsonlint': {
               'config': '<%= cfg.PATH__CONFIG %>/<%= cfg.GLOB__JSON__RECURSIVE %>',
@@ -93,7 +98,7 @@ module.exports = function ( $grunt ) {
               'clean',
               'copy',
               'nodefy',
-              'string-replace'
+              'string-replace:src'
             ],
           'default': [
               'jsonlint'
