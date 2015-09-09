@@ -22,4 +22,6 @@ read tagMessage && grunt exec:tag --tagMessage="$tagMessage";
 
 git push origin --tags && npm publish ./;
 
+grunt clean:fwd;
+
 git reset $hash --hard && git checkout develop;
