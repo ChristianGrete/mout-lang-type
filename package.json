@@ -1,74 +1,74 @@
 {
-  "author": {
-    "email": "webmaster@christiangrete.com",
-    "name": "Christian Grete",
-    "url": "https://christiangrete.com"
-  },
-  "bugs": {
-    "email": "webmaster@christiangrete.com",
-    "url": "https://github.com/ChristianGrete/mout-lang-type/issues"
-  },
-  "contributors": [
-    {
-      "email": "webmaster@christiangrete.com",
-      "name": "Christian Grete",
-      "url": "https://christiangrete.com"
-    }
-  ],
-  "description": "An extension to mout/lang utilities",
-  "dependencies": {
-    "requirejs": "^2.1.20"
-  },
-  "devDependencies": {
-    "bower": "^1.5.2",
-    "grunt": "^0.4.5",
-    "grunt-bump": "^0.5.0",
-    "grunt-cli": "^0.1.13",
-    "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-copy": "^0.8.1",
-    "grunt-easy-nodefy": "0.0.2",
-    "grunt-exec": "^0.4.6",
-    "grunt-jsonlint": "^1.0.4",
-    "grunt-modify-json": "^0.1.1",
-    "grunt-register-tasks": "^1.0.0",
-    "grunt-string-replace": "^1.2.0",
-    "load-grunt-tasks": "^3.2.0",
-    "npm": "^2.14.2",
-    "time-grunt": "^1.2.1"
-  },
-  "files": [
-    "dist/**/*.js"
-  ],
-  "homepage": "https://github.com/ChristianGrete/mout-lang-type",
-  "keywords": [
-    "AMD",
-    "camelCase",
-    "CommonJS",
-    "isKind",
-    "isType",
-    "kindOf",
-    "lang",
-    "lowercase",
-    "mout",
-    "RequireJS",
-    "type",
-    "typeOf",
-    "utilities"
-  ],
-  "license": "MIT",
-  "main": "dist/cjs/index.js",
-  "maintainers": [
-    {
-      "email": "webmaster@christiangrete.com",
-      "name": "Christian Grete",
-      "url": "https://christiangrete.com"
-    }
-  ],
-  "name": "mout-lang-type",
-  "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/ChristianGrete/mout-lang-type.git"
-  },
-  "version": "0.2.3"
+    "author": {
+        "email": "webmaster@christiangrete.com",
+        "name": "Christian Grete",
+        "url": "https://christiangrete.com"
+    },
+    "bugs": {
+        "email": "webmaster@christiangrete.com",
+        "url": "https://github.com/ChristianGrete/mout-lang-type/issues"
+    },
+    "contributors": [
+        {
+            "email": "webmaster@christiangrete.com",
+            "name": "Christian Grete",
+            "url": "https://christiangrete.com"
+        }
+    ],
+    "description": "An extension to mout/lang utilities",
+    "dependencies": {
+        "requirejs": "^2.1.20"
+    },
+    "devDependencies": {
+        "bower": "^1.5.2",
+        "grunt": "^0.4.5",
+        "grunt-bump": "^0.5.0",
+        "grunt-cli": "^0.1.13",
+        "grunt-contrib-clean": "^0.6.0",
+        "grunt-contrib-copy": "^0.8.1",
+        "grunt-easy-nodefy": "0.0.2",
+        "grunt-exec": "^0.4.6",
+        "grunt-jsonlint": "^1.0.4",
+        "grunt-modify-json": "^0.1.1",
+        "grunt-register-tasks": "^1.0.0",
+        "grunt-string-replace": "^1.2.0",
+        "load-grunt-tasks": "^3.2.0",
+        "npm": "^2.14.2",
+        "time-grunt": "^1.2.1"
+    },
+    "files": [
+        "dist/**/*.js"
+    ],
+    "homepage": "https://github.com/ChristianGrete/mout-lang-type",
+    "keywords": [
+        "AMD",
+        "camelCase",
+        "CommonJS",
+        "isKind",
+        "isType",
+        "kindOf",
+        "lang",
+        "lowercase",
+        "mout",
+        "RequireJS",
+        "type",
+        "typeOf",
+        "utilities"
+    ],
+    "license": "MIT",
+    "main": "dist/cjs/index.js",
+    "maintainers": [
+        {
+            "email": "webmaster@christiangrete.com",
+            "name": "Christian Grete",
+            "url": "https://christiangrete.com"
+        }
+    ],
+    "name": "mout-lang-type",
+    "private": false,
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/ChristianGrete/mout-lang-type.git"
+    },
+    "version": "0.2.3"
 }
