@@ -26,7 +26,9 @@ module.exports = function ( $grunt ) {
           'bump': {
               'options': {
                   'commit': true,
-                  'commitFiles': '<%= cfg.PATH__ROOT %>/<%= cfg.GLOB__MANIFESTS %>',
+                  'commitFiles': [
+                      '<%= cfg.PATH__ROOT %>/<%= cfg.GLOB__MANIFESTS %>'
+                    ],
                   'commitMessage': 'bump(version): %VERSION%',
                   'createTag': false,
                   'files': '<%= cfg.PATH__ROOT %>/<%= cfg.GLOB__MANIFESTS %>',
