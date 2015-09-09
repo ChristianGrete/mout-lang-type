@@ -11,6 +11,7 @@
   "PATH__DIST": "./dist",
   "PATH__DIST__AMD": "./dist/amd",
   "PATH__DIST__CJS": "./dist/cjs",
+  "PATH__FWD": "./fwd",
   "PATH__NODE_MODULES": "./node_modules",
   "PATH__ROOT": ".",
   "PATH__SRC": "./src"
