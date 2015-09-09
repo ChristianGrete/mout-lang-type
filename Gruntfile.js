@@ -15,6 +15,7 @@ module.exports = function ( $grunt ) {
       _$grunt__file__readJSON = _$grunt__file.readJSON,
 
       _plugins = [
+          'grunt-bump',
           'grunt-contrib-*',
           'grunt-easy-nodefy',
           'grunt-jsonlint',
@@ -22,6 +23,21 @@ module.exports = function ( $grunt ) {
         ],
 
       _config = {
+          'bump': {
+              'options': {
+                  'commit': true,
+                  'commitFiles': '<%= cfg.PATH__ROOT %>/<%= cfg.GLOB__MANIFESTS %>',
+                  'commitMessage': 'bump(version): %VERSION%',
+                  'createTag': false,
+                  'files': '<%= cfg.PATH__ROOT %>/<%= cfg.GLOB__MANIFESTS %>',
+                  'push': true,
+                  'pushTo': 'origin',
+                  'updateConfigs': [
+                      null,
+                      'pkg'
+                    ]
+                }
+            },
           'cfg': _$grunt__file__readJSON( _URL__GRUNT_CONFIG_FILE ),
           'clean': {
               'dist': '<%= cfg.PATH__DIST %>'
