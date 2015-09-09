@@ -47,6 +47,12 @@ module.exports = function ( $grunt ) {
               'dist': '<%= cfg.PATH__DIST %>'
             },
           'copy': {
+              'fwd': {
+                  'cwd': '<%= cfg.PATH__FWD %>',
+                  'dest': '<%= cfg.PATH__ROOT %>',
+                  'expand': true,
+                  'src': '<%= cfg.GLOB__JS__RECURSIVE %>'
+                },
               'src': {
                   'cwd': '<%= cfg.PATH__SRC %>',
                   'dest': '<%= cfg.PATH__DIST__AMD %>',
