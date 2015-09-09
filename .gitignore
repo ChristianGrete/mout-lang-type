@@ -1,5 +1,6 @@
 .DS_Store
 bower_components/
 lang*
+!dist/**/lang*
 node_modules/
 npm-debug.log
