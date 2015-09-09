@@ -37,7 +37,9 @@
     "time-grunt": "^1.2.1"
   },
   "files": [
-    "dist/**/*.js"
+    "dist/**/*.js",
+    "lang.js",
+    "lang/{isType,typeOf}.js"
   ],
   "homepage": "https://github.com/ChristianGrete/mout-lang-type",
   "keywords": [
