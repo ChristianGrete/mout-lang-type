@@ -44,7 +44,11 @@ module.exports = function ( $grunt ) {
             },
           'cfg': _$grunt__file__readJSON( _URL__GRUNT_CONFIG_FILE ),
           'clean': {
-              'dist': '<%= cfg.PATH__DIST %>'
+              'dist': '<%= cfg.PATH__DIST %>',
+              'fwd': [
+                  '<%= cfg.PATH__LANG %>',
+                  '<%= cfg.PATH__ROOT %>/<%= cfg.GLOB__LANG_JS %>'
+                ]
             },
           'copy': {
               'fwd': {
