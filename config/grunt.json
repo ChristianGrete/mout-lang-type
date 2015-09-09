@@ -4,6 +4,7 @@
   "GLOB__JS__RECURSIVE": "**/*.js",
   "GLOB__JSON": "*.json",
   "GLOB__JSON__RECURSIVE": "**/*.json",
+  "GLOB__LANG_JS": "lang.js",
   "GLOB__MANIFESTS": "{bower,package}.json",
   "PATH__BIN": "./bin",
   "PATH__BOWER_COMPONENTS": "./bower_components",
@@ -12,6 +13,7 @@
   "PATH__DIST__AMD": "./dist/amd",
   "PATH__DIST__CJS": "./dist/cjs",
   "PATH__FWD": "./fwd",
+  "PATH__LANG": "./lang",
   "PATH__NODE_MODULES": "./node_modules",
   "PATH__ROOT": ".",
   "PATH__SRC": "./src"
