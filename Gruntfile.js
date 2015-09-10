@@ -15,6 +15,7 @@ module.exports = function ( $grunt ) {
       _$grunt__file__readJSON = _$grunt__file.readJSON,
 
       _plugins = [
+          'grunt-browser-sync',
           'grunt-bump',
           'grunt-contrib-*',
           'grunt-easy-nodefy',
@@ -26,6 +27,16 @@ module.exports = function ( $grunt ) {
         ],
 
       _config = {
+          'browserSync': {
+              'bsFiles': {
+                  'src': '<%= cfg.PATH__DOCS %>/<%= cfg.GLOB__ANY_FILE__RECURSIVE %>'
+                },
+              'options': {
+                  'port': 8080,
+                  'server': '<%= cfg.PATH__DOCS %>',
+                  'watchTask': true
+                }
+            },
           'bump': {
               'options': {
                   'commit': true,
@@ -111,6 +122,7 @@ module.exports = function ( $grunt ) {
                   'src': '<%= cfg.GLOB__JS__RECURSIVE %>'
                 }
             },
+          'pkg': _$grunt__file__readJSON( _URL__NPM_MANIFEST_FILE ),
           'string-replace': {
               'src': {
                   'files': [
@@ -131,7 +143,17 @@ module.exports = function ( $grunt ) {
                     }
                 }
             },
-          'pkg': _$grunt__file__readJSON( _URL__NPM_MANIFEST_FILE )
+          'watch': {
+              'docs': {
+                  'files': '<%= cfg.PATH__DOCS %>/<%= cfg.GLOB__ANY_FILE__RECURSIVE %>'
+                },
+              'src': {
+                  'files': '<%= cfg.PATH__SRC %>/<%= cfg.GLOB__JS__RECURSIVE %>',
+                  'tasks': [
+                      'jsdoc'
+                    ]
+                }
+            }
         },
 
       _tasks = {
@@ -145,6 +167,11 @@ module.exports = function ( $grunt ) {
           'default': [
               'jsonlint',
               'jshint'
+            ],
+          'serve': [
+              'jsdoc',
+              'browserSync',
+              'watch'
             ]
         };
 
