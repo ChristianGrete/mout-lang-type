@@ -19,6 +19,7 @@ module.exports = function ( $grunt ) {
           'grunt-contrib-*',
           'grunt-easy-nodefy',
           'grunt-exec',
+          'grunt-jsdoc',
           'grunt-jsonlint',
           'grunt-modify-json',
           'grunt-string-replace'
@@ -45,6 +46,7 @@ module.exports = function ( $grunt ) {
           'cfg': _$grunt__file__readJSON( _URL__GRUNT_CONFIG_FILE ),
           'clean': {
               'dist': '<%= cfg.PATH__DIST %>',
+              'docs': '<%= cfg.PATH__DOCS %>',
               'fwd': [
                   '<%= cfg.PATH__LANG %>',
                   '<%= cfg.PATH__ROOT %>/<%= cfg.GLOB__LANG_JS %>'
@@ -67,6 +69,12 @@ module.exports = function ( $grunt ) {
           'exec': {
               'commit': 'git commit -m "release(v<%= pkg.version %>): distribute"',
               'tag': 'git tag -a v<%= pkg.version %> -m "<%= grunt.option(\'tagMessage\') %>"'
+            },
+          'jsdoc': {
+              'src': {
+                  'dest': '<%= cfg.PATH__DOCS %>',
+                  'src': '<%= cfg.PATH__SRC %>/<%= cfg.GLOB__JS__RECURSIVE %>'
+                }
             },
           'jshint': {
               'options': {
