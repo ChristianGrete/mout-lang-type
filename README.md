@@ -61,7 +61,7 @@ This is communist software. It is crafted with heart and soul to the best of the
 
 This software is licensed under [MIT License](LICENSE.md).
 
-[MIT](LICENSE.md) © [Christian Grete](https://christiangrete.com)
+Copyright © 2015 [Christian Grete](https://christiangrete.com)
 - [GitHub](https://github.com/ChristianGrete)
 - [npm](https://www.npmjs.com/~christiangrete)
 - [Twitter](https://twitter.com/ChristianGrete)
