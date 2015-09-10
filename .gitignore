@@ -1,5 +1,6 @@
 .DS_Store
 bower_components/
+docs/
 lang*
 !dist/**/lang*
 node_modules/
