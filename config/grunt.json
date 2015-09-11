@@ -9,6 +9,8 @@
   "GLOB__LANG_JS": "lang.js",
   "GLOB__MANIFESTS": "{bower,package}.json",
   "GLOB__RUNNER_HTML": "runner.html",
+  "GLOB__RUNNER_JS": "runner.js",
+  "GLOB__RUNNER_TEMP_HTML": "runner.temp.html",
   "PATH__BIN": "./bin",
   "PATH__BOWER_COMPONENTS": "./bower_components",
   "PATH__CONFIG": "./config",
@@ -22,5 +24,6 @@
   "PATH__ROOT": ".",
   "PATH__SRC": "./src",
   "PATH__TESTS": "./tests",
+  "PATH__TESTS__HELPERS": "./tests/helpers",
   "PATH__TESTS__SPECS": "./tests/specs"
 }
