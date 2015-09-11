@@ -8,6 +8,7 @@
   "GLOB__JSON__RECURSIVE": "**/*.json",
   "GLOB__LANG_JS": "lang.js",
   "GLOB__MANIFESTS": "{bower,package}.json",
+  "GLOB__RUNNER_HTML": "runner.html",
   "PATH__BIN": "./bin",
   "PATH__BOWER_COMPONENTS": "./bower_components",
   "PATH__CONFIG": "./config",
