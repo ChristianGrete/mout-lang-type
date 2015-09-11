@@ -20,7 +20,8 @@ define(
           'Number',
           'Object',
           'RegExp',
-          'String'
+          'String',
+          'Symbol'
         ],
       _conversionObject = {},
       _hasOwnProperty,
