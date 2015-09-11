@@ -84,7 +84,8 @@ module.exports = function ( $grunt ) {
           'jasmine': {
               'src': {
                   'options': {
-                      'outfile': '<%= cfg.PATH__TESTS %>/<%= cfg.GLOB__RUNNER_HTML %>',
+                      'helpers': '<%= cfg.PATH__TESTS__HELPERS %>/<%= cfg.GLOB__JS__RECURSIVE %>',
+                      'outfile': '<%= cfg.PATH__TESTS %>/<%= cfg.GLOB__RUNNER_TEMP_HTML %>',
                       'specs': '<%= cfg.PATH__TESTS__SPECS %>/<%= cfg.GLOB__JS__RECURSIVE %>',
                       'template': require('grunt-template-jasmine-requirejs')
                     }
