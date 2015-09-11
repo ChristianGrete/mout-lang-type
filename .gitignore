@@ -3,5 +3,6 @@ bower_components/
 docs/
 lang*
 !dist/**/lang*
+!tests/**/lang*
 node_modules/
 npm-debug.log
