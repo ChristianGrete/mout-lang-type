@@ -34,7 +34,7 @@ define(
       _toString = _conversionObject.toString;
 
     if( typeof Symbol === 'function' ) {
-      _builtInTags.push('Symbol');
+      _length = _builtInTags.push('Symbol');
     }
 
     for( ; _index < _length; _index ++ ) {
