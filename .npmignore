@@ -14,3 +14,4 @@ fwd/
 Gruntfile.js
 npm-debug.log
 src/
+tests/
