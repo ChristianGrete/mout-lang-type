@@ -6,4 +6,4 @@ lang*
 !tests/**/lang*
 node_modules/
 npm-debug.log
-tests/runner.html
+tests/runner.temp.html
