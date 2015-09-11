@@ -1,6 +1,8 @@
+'use strict';
+
 define(
   [
-    '../../src/lang/typeOf'
+    'mout-lang-type/lang/typeOf'
   ],
   function ( typeOf ) {
     describe(
@@ -108,7 +110,7 @@ define(
               expect( typeof _symbolObject !== typeOf(_symbolObject) ).toBe( true ),
               expect( typeOf(_symbolObject) ).toBe('symbol'),
               expect( typeof _symbolPrimitive === typeOf(_symbolPrimitive) ).toBe( true ),
-              expect( typeOf(_symbolPrimitive) );
+              expect( typeOf(_symbolPrimitive) ).toBe('symbol');
             }
           );
         }
