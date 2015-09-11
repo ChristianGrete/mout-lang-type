@@ -81,6 +81,15 @@ module.exports = function ( $grunt ) {
               'commit': 'git commit -m "release(v<%= pkg.version %>): distribute"',
               'tag': 'git tag -a v<%= pkg.version %> -m "<%= grunt.option(\'tagMessage\') %>"'
             },
+          'jasmine': {
+              'src': {
+                  'options': {
+                      'outfile': '<%= cfg.PATH__TESTS %>/<%= cfg.GLOB__RUNNER_HTML %>',
+                      'specs': '<%= cfg.PATH__TESTS__SPECS %>/<%= cfg.GLOB__JS__RECURSIVE %>',
+                      'template': require('grunt-template-jasmine-requirejs')
+                    }
+                }
+            },
           'jsdoc': {
               'src': {
                   'dest': '<%= cfg.PATH__DOCS %>',
@@ -172,6 +181,10 @@ module.exports = function ( $grunt ) {
               'jsdoc',
               'browserSync',
               'watch'
+            ],
+          'test': [
+              'default',
+              'jasmine'
             ]
         };
 
