@@ -20,8 +20,7 @@ define(
           'Number',
           'Object',
           'RegExp',
-          'String',
-          'Symbol'
+          'String'
         ],
       _conversionObject = {},
       _hasOwnProperty,
@@ -33,6 +32,10 @@ define(
       _slice = _prototype.slice,
       _toLowerCase = _prototype.toLowerCase,
       _toString = _conversionObject.toString;
+
+    if( typeof Symbol === 'function' ) {
+      _builtInTags.push('Symbol');
+    }
 
     for( ; _index < _length; _index ++ ) {
       _builtInTag = _builtInTags[ _index ],
