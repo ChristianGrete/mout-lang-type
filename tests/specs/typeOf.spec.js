@@ -27,7 +27,7 @@ define(
         // TODO: array
 
         it(
-          'determines booleans',
+          'determines boolean',
           function () {
             var
               _booleanObjectFalse = new Boolean,
@@ -51,6 +51,8 @@ define(
         // TODO: error
 
         // TODO: function
+
+        // TODO: null
 
         // TODO: number
 
