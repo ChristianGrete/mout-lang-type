@@ -2,9 +2,10 @@
 
 define(
   [
+    'mout-lang-type/lang/isType',
     'mout-lang-type/lang/typeOf'
   ],
-  function ( typeOf ) {
+  function ( isType, typeOf ) {
     describe(
       'mout-lang-type/lang/typeOf',
       function () {
@@ -34,6 +35,19 @@ define(
               _arrayConversionLength = Object( _arrayLength ),
               _arrayConversionLiteral = Object( _arrayLiteral ),
               _arrayConversionObject = Object( _arrayObject );
+
+            expect( typeof _arrayLength !== typeOf(_arrayLength) ).toBe( true ),
+            expect( typeOf(_arrayLength) ).toBe('array'),
+            expect( typeof _arrayLiteral !== typeOf(_arrayLiteral) ).toBe( true ),
+            expect( typeOf(_arrayLiteral) ).toBe('array'),
+            expect( typeof _arrayObject !== typeOf(_arrayObject) ).toBe( true ),
+            expect( typeOf(_arrayObject) ).toBe('array'),
+            expect( typeof _arrayConversionLength !== typeOf(_arrayConversionLength) ).toBe( true ),
+            expect( typeOf(_arrayConversionLength) ).toBe('array'),
+            expect( typeof _arrayConversionLiteral !== typeOf(_arrayConversionLiteral) ).toBe( true ),
+            expect( typeOf(_arrayConversionLiteral) ).toBe('array'),
+            expect( typeof _arrayConversionObject !== typeOf(_arrayConversionObject) ).toBe( true ),
+            expect( typeOf(_arrayConversionObject) ).toBe('array');
           }
         ),
 
