@@ -7,9 +7,20 @@ define(
   ],
   function ( isType, typeOf ) {
     describe(
+      'mout-lang-type/lang/isType',
+      function () {
+        it(
+          'is a function',
+          function () {
+            expect( typeof isType ).toBe('function');
+          }
+        );
+      }
+    ),
+
+    describe(
       'mout-lang-type/lang/typeOf',
       function () {
-
         it(
           'is a function',
           function () {
@@ -96,6 +107,77 @@ define(
         // TODO: object, including exotics
 
         it(
+          'determines object',
+          function () {
+            var
+              _objectCustom = function () {
+                  var
+                    Custom = function Custom () {},
+                    toString = function toString () {
+                        return '[object Custom]';
+                      };
+
+                  if( typeof Object.create === 'function' ) {
+                    Custom.prototype = Object.create(
+                        null,
+                        {
+                          'constructor': {
+                              'value': Custom
+                            },
+                          'toString': {
+                              'value': toString
+                            }
+                        }
+                      );
+                  } else {
+                    Custom.prototype = {
+                        'constructor': Custom,
+                        'toString': toString
+                      };
+                  }
+
+                  return new Custom;
+                }(),
+              _objectExotic,
+              _objectLiteral = {},
+              _objectInstance = new Object,
+              _objectConversionCustom = Object( _objectCustom ),
+              _objectConversionExotic,
+              _objectConversionLiteral = Object( _objectLiteral ),
+              _objectConversionInstance = Object( _objectInstance );
+
+            expect( typeof _objectCustom === typeOf(_objectCustom) ).toBe( true ),
+            expect( typeOf(_objectCustom) ).toBe('object');
+
+            if( typeof navigator === 'object' ) {
+              _objectExotic = navigator,
+
+              expect( typeof _objectExotic === typeOf(_objectExotic) ).toBe( true ),
+              expect( typeOf(_objectExotic) ).toBe('object');
+            }
+
+            expect( typeof _objectLiteral === typeOf(_objectLiteral) ).toBe( true ),
+            expect( typeOf(_objectLiteral) ).toBe('object'),
+            expect( typeof _objectInstance === typeOf(_objectInstance) ).toBe( true ),
+            expect( typeOf(_objectInstance) ).toBe('object'),
+            expect( typeof _objectConversionCustom === typeOf(_objectConversionCustom) ).toBe( true ),
+            expect( typeOf(_objectConversionCustom) ).toBe('object');
+
+            if( typeof _objectExotic !== 'undefined' ) {
+              _objectConversionExotic = Object( _objectExotic ),
+
+              expect( typeof _objectConversionExotic === typeOf(_objectConversionExotic) ).toBe( true ),
+              expect( typeOf(_objectConversionExotic) ).toBe('object');
+            }
+
+            expect( typeof _objectConversionLiteral === typeOf(_objectConversionLiteral) ).toBe( true ),
+            expect( typeOf(_objectConversionLiteral) ).toBe('object'),
+            expect( typeof _objectConversionInstance === typeOf(_objectConversionInstance) ).toBe( true ),
+            expect( typeOf(_objectConversionInstance) ).toBe('object');
+          }
+        ),
+
+        it(
           'determines regExp',
           function () {
             var
@@ -169,9 +251,7 @@ define(
             expect( typeOf() ).toBe('undefined');
           }
         );
-
       }
     );
-
   }
 );
