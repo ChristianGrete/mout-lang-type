@@ -106,7 +106,19 @@ define(
 
         // TODO: error
 
-        // TODO: function
+        it(
+          'determines function',
+          function () {
+            var
+              _functionLiteral = function () {},
+              _functionObject = new Function;
+
+            expect( typeof _functionLiteral === typeOf(_functionLiteral) ).toBe( true ),
+            expect( typeOf(_functionLiteral) ).toBe('function'),
+            expect( typeof _functionObject === typeOf(_functionObject) ).toBe( true ),
+            expect( typeOf(_functionObject) ).toBe('function');
+          }
+        ),
 
         it(
           'determines null',
