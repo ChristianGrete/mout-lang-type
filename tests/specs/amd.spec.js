@@ -102,7 +102,31 @@ define(
           }
         ),
 
-        // TODO: date
+        it(
+          'determines date',
+          function () {
+            var
+              _dateString = Date(),
+              _dateObject = new Date,
+              _dateValue = _dateObject.valueOf(),
+              _dateConversionString = Object( _dateString ),
+              _dateConversionObject = Object(_dateObject ),
+              _dateConversionValue = Object( _dateValue );
+
+            expect( typeof _dateString === typeOf(_dateString) ).toBe( true ),
+            expect( typeOf(_dateString) ).toBe('string'),
+            expect( typeof _dateObject !== typeOf(_dateObject) ).toBe( true ),
+            expect( typeOf(_dateObject) ).toBe('date'),
+            expect( typeof _dateValue === typeOf(_dateValue) ).toBe( true ),
+            expect( typeOf(_dateValue) ).toBe('number'),
+            expect( typeof _dateConversionString !== typeOf(_dateConversionString) ).toBe( true ),
+            expect( typeOf(_dateConversionString) ).toBe('string'),
+            expect( typeof _dateConversionObject !== typeOf(_dateConversionObject) ).toBe( true ),
+            expect( typeOf(_dateConversionObject) ).toBe('date'),
+            expect( typeof _dateConversionValue !== typeOf(_dateConversionValue) ).toBe( true ),
+            expect( typeOf(_dateConversionValue) ).toBe('number');
+          }
+        ),
 
         // TODO: error
 
