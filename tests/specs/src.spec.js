@@ -100,11 +100,51 @@ define(
 
         // TODO: function
 
-        // TODO: null
+        it(
+          'determines null',
+          function () {
+            expect( typeof null !== typeOf(null) ).toBe( true ),
+            expect( typeOf(null) ).toBe('null');
+          }
+        ),
 
-        // TODO: number
+        it(
+          'determines number',
+          function () {
+            var
+              _noNumber = Number.NaN,
+              _numberNegativeInfinity = Number.NEGATIVE_INFINITY,
+              _numberObject = new Number('1'),
+              _numberPositiveInfinity = Number.POSITIVE_INFINITY,
+              _numberPrimitive = 1,
+              _numberConversionNoNumber = Object( _noNumber ),
+              _numberConversionNegativeInfinity = Object( _numberNegativeInfinity ),
+              _numberConversionObject = Object( _numberObject ),
+              _numberConversionPositiveInfinity = Object( _numberPositiveInfinity ),
+              _numberConversionPrimitive = Object( _numberPrimitive );
 
-        // TODO: object, including exotics
+            expect( typeof _noNumber === typeOf(_noNumber) ).toBe( true ),
+            expect( typeOf(_noNumber) ).toBe('number'),
+            expect( typeof _numberNegativeInfinity === typeOf(_numberNegativeInfinity) ).toBe( true ),
+            expect( typeOf(_numberNegativeInfinity) ).toBe('number'),
+            expect( typeof _numberObject !== typeOf(_numberObject) ).toBe( true ),
+            expect( typeOf(_numberObject) ).toBe('number'),
+            expect( typeof _numberPositiveInfinity === typeOf(_numberPositiveInfinity) ).toBe( true ),
+            expect( typeOf(_numberPositiveInfinity) ).toBe('number'),
+            expect( typeof _numberPrimitive === typeOf(_numberPrimitive) ).toBe( true ),
+            expect( typeOf(_numberPrimitive) ).toBe('number'),
+            expect( typeof _numberConversionNoNumber !== typeOf(_numberConversionNoNumber) ).toBe( true ),
+            expect( typeOf(_numberConversionNoNumber) ).toBe('number'),
+            expect( typeof _numberConversionNegativeInfinity !== typeOf(_numberConversionNegativeInfinity) ).toBe( true ),
+            expect( typeOf(_numberConversionNegativeInfinity) ).toBe('number'),
+            expect( typeof _numberConversionObject !== typeOf(_numberConversionObject) ).toBe( true ),
+            expect( typeOf(_numberConversionObject) ).toBe('number'),
+            expect( typeof _numberConversionPositiveInfinity !== typeOf(_numberConversionPositiveInfinity) ).toBe( true ),
+            expect( typeOf(_numberConversionPositiveInfinity) ).toBe('number'),
+            expect( typeof _numberConversionPrimitive !== typeOf(_numberConversionPrimitive) ).toBe( true ),
+            expect( typeOf(_numberConversionPrimitive) ).toBe('number');
+          }
+        ),
 
         it(
           'determines object',
