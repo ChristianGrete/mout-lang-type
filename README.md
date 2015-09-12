@@ -9,7 +9,11 @@
 
 > An extension to [mout](http://moutjs.com)/[lang](http://moutjs.com/docs/latest/lang.html) utilities for nerds
 
-__mout-lang-type__ is an extension to [MOUT](http://moutjs.com)’s _[lang](http://moutjs.com/docs/latest/lang.html)_ utilities. It provides two modules: A `typeOf` and an `isType` function to be used instead of the included `kindOf` and `isKind` functions. The difference is that __types__ are expressed in _lowerCamelCase_ and represent the built-in objects `[[Class]]` internal slot tags while MOUT’s __kinds__ are expressed in _UpperCamelCase_ representing the overall tags of objects, even of so-called _non-standard exotic_ objects.
+__mout-lang-type__ is an extension to [MOUT](http://moutjs.com)’s _[lang](http://moutjs.com/docs/latest/lang.html)_ utilities. It provides two modules: A `typeOf` and an `isType` function to be used instead of the included `kindOf` and `isKind` functions. The difference is that __types__ are expressed in _lowerCamelCase_ and represent the built-in objects `[[Class]]` internal slot tags while MOUT’s __kinds__ are expressed in _UpperCamelCase_ representing the overall tags of objects, even of so-called _non-standard exotic_ objects:
+```js
+kindOf( navigator ); // 'Navigator'
+typeOf( navigator ); // 'object'
+```
 
 ## Getting started
 
@@ -44,12 +48,12 @@ _lang.isType( new String('foo'), 'string' ); // true
 
 // Load the individual utilities:
 var
-  _isType = require('mout-lang-type/lang/isType'),
+  _isType = require('mout-lang-type/lang/isType');
   _typeOf = require('mout-lang-type/lang/typeOf');
 
 // Use the individual utilities:
-_typeOf( [1, 2, 3] ) === 'array'; // true;
-_isType( new RegExp, 'regExp') // true;
+_typeOf( [1, 2, 3] ) === 'array'; // true
+_isType( new RegExp, 'regExp'); // true
 ```
 Keep in mind that the module’s name `mout-lang-type` in AMD is actually just the module’s root directory and can differ from the example above depending on your deployed scripts directory structure.
 
