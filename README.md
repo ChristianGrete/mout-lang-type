@@ -49,7 +49,7 @@ var
 
 // Use the individual utilities:
 _typeOf( [1, 2, 3] ) === 'array'; // true;
-_isKind( new RegExp, 'regExp') // true;
+_isType( new RegExp, 'regExp') // true;
 ```
 Keep in mind that the module’s name `mout-lang-type` in AMD is actually just the module’s root directory and can differ from the example above depending on your deployed scripts directory structure.
 
