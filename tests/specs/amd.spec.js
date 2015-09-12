@@ -14,6 +14,14 @@ define(
           function () {
             expect( typeof isType ).toBe('function');
           }
+        ),
+
+        it(
+          'works',
+          function () {
+            expect( isType(null, 'null') ).toBe( true ),
+            expect( isType([], 'array') ).toBe( true );
+          }
         );
       }
     ),
