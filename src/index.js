@@ -20,8 +20,8 @@ define(
      */
 
     return {
-        lang: require('./lang'),
-        VERSION: '<%= pkg.version %>'
+        'lang': require('./lang'),
+        'VERSION': '<%= pkg.version %>'
       };
   }
 );

@@ -18,8 +18,8 @@ define(
      */
 
     return {
-        isType: require('./lang/isType'),
-        typeOf: require('./lang/typeOf')
+        'isType': require('./lang/isType'),
+        'typeOf': require('./lang/typeOf')
       };
   }
 );
