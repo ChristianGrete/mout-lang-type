@@ -3,8 +3,10 @@
   "-W030": true,
   "-W041": true,
   "-W084": true,
+  "-W097": true,
   "globals": {
     "define": false,
-    "require": false
+    "require": false,
+    "requirejs": false
   }
 }

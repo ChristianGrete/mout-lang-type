@@ -1,3 +1,13 @@
+// jshint -W053, -W054, -W058, -W064
+
+/* globals
+ describe: false,
+ expect: false,
+ it: false,
+ navigator: false,
+ Symbol: false
+*/
+
 'use strict';
 
 define(

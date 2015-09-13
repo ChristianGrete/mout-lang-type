@@ -102,7 +102,8 @@ module.exports = function ( $grunt ) {
                   'jshintrc': true
                 },
               'fwd': '<%= cfg.PATH__FWD %>/<%= cfg.GLOB__JS__RECURSIVE %>',
-              'src': '<%= cfg.PATH__SRC %>/<%= cfg.GLOB__JS__RECURSIVE %>'
+              'src': '<%= cfg.PATH__SRC %>/<%= cfg.GLOB__JS__RECURSIVE %>',
+              'tests': '<%= cfg.PATH__TESTS %>/<%= cfg.GLOB__JS__RECURSIVE %>'
             },
           'jsonlint': {
               'config': [
