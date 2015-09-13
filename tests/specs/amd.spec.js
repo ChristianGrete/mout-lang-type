@@ -50,23 +50,14 @@ define(
             var
               _arrayLength = Array( 1 ),
               _arrayLiteral = [],
-              _arrayObject = new Array( 0, 1, 2 ),
-              _arrayConversionLength = Object( _arrayLength ),
-              _arrayConversionLiteral = Object( _arrayLiteral ),
-              _arrayConversionObject = Object( _arrayObject );
+              _arrayObject = new Array( 0, 1, 2 );
 
             expect( typeof _arrayLength !== typeOf(_arrayLength) ).toBe( true ),
             expect( typeOf(_arrayLength) ).toBe('array'),
             expect( typeof _arrayLiteral !== typeOf(_arrayLiteral) ).toBe( true ),
             expect( typeOf(_arrayLiteral) ).toBe('array'),
             expect( typeof _arrayObject !== typeOf(_arrayObject) ).toBe( true ),
-            expect( typeOf(_arrayObject) ).toBe('array'),
-            expect( typeof _arrayConversionLength !== typeOf(_arrayConversionLength) ).toBe( true ),
-            expect( typeOf(_arrayConversionLength) ).toBe('array'),
-            expect( typeof _arrayConversionLiteral !== typeOf(_arrayConversionLiteral) ).toBe( true ),
-            expect( typeOf(_arrayConversionLiteral) ).toBe('array'),
-            expect( typeof _arrayConversionObject !== typeOf(_arrayConversionObject) ).toBe( true ),
-            expect( typeOf(_arrayConversionObject) ).toBe('array');
+            expect( typeOf(_arrayObject) ).toBe('array');
           }
         ),
 
@@ -78,8 +69,6 @@ define(
               _booleanObjectTrue = new Boolean( true ),
               _booleanPrimitiveFalse = Boolean(),
               _booleanPrimitiveTrue = true,
-              _booleanConversionObjectFalse = Object( _booleanObjectFalse ),
-              _booleanConversionObjectTrue = Object( _booleanObjectTrue ),
               _booleanConversionPrimitiveFalse = Object( _booleanPrimitiveFalse ),
               _booleanConversionPrimitiveTrue = Object( _booleanPrimitiveTrue );
 
@@ -90,13 +79,9 @@ define(
             expect( typeof _booleanPrimitiveFalse === typeOf(_booleanPrimitiveFalse) ).toBe( true ),
             expect( typeOf(_booleanPrimitiveFalse) ).toBe('boolean'),
             expect( typeof _booleanPrimitiveTrue === typeOf(_booleanPrimitiveTrue) ).toBe( true ),
-            expect( typeOf(_booleanPrimitiveTrue) ).toBe('boolean');
-            expect( typeof _booleanConversionObjectFalse !== typeOf(_booleanConversionObjectFalse) ).toBe( true ),
-            expect( typeOf(_booleanConversionObjectFalse) ).toBe('boolean');
-            expect( typeof _booleanConversionObjectTrue !== typeOf(_booleanConversionObjectTrue) ).toBe( true ),
-            expect( typeOf(_booleanConversionObjectTrue) ).toBe('boolean');
+            expect( typeOf(_booleanPrimitiveTrue) ).toBe('boolean'),
             expect( typeof _booleanConversionPrimitiveFalse !== typeOf(_booleanConversionPrimitiveFalse) ).toBe( true ),
-            expect( typeOf(_booleanConversionPrimitiveFalse) ).toBe('boolean');
+            expect( typeOf(_booleanConversionPrimitiveFalse) ).toBe('boolean'),
             expect( typeof _booleanConversionPrimitiveTrue !== typeOf(_booleanConversionPrimitiveTrue) ).toBe( true ),
             expect( typeOf(_booleanConversionPrimitiveTrue) ).toBe('boolean');
           }
@@ -128,7 +113,19 @@ define(
           }
         ),
 
-        // TODO: error
+        it(
+          'determines error',
+          function () {
+            var
+              _genericError = new Error,
+              _specificError = new TypeError;
+
+            expect( typeof _genericError !== typeOf(_genericError) ).toBe( true ),
+            expect( typeOf(_genericError) ).toBe('error'),
+            expect( typeof _specificError !== typeOf(_specificError) ).toBe( true ),
+            expect( typeOf(_specificError) ).toBe('error');
+          }
+        ),
 
         it(
           'determines function',
@@ -163,7 +160,6 @@ define(
               _numberPrimitive = 1,
               _numberConversionNoNumber = Object( _noNumber ),
               _numberConversionNegativeInfinity = Object( _numberNegativeInfinity ),
-              _numberConversionObject = Object( _numberObject ),
               _numberConversionPositiveInfinity = Object( _numberPositiveInfinity ),
               _numberConversionPrimitive = Object( _numberPrimitive );
 
@@ -181,8 +177,6 @@ define(
             expect( typeOf(_numberConversionNoNumber) ).toBe('number'),
             expect( typeof _numberConversionNegativeInfinity !== typeOf(_numberConversionNegativeInfinity) ).toBe( true ),
             expect( typeOf(_numberConversionNegativeInfinity) ).toBe('number'),
-            expect( typeof _numberConversionObject !== typeOf(_numberConversionObject) ).toBe( true ),
-            expect( typeOf(_numberConversionObject) ).toBe('number'),
             expect( typeof _numberConversionPositiveInfinity !== typeOf(_numberConversionPositiveInfinity) ).toBe( true ),
             expect( typeOf(_numberConversionPositiveInfinity) ).toBe('number'),
             expect( typeof _numberConversionPrimitive !== typeOf(_numberConversionPrimitive) ).toBe( true ),
@@ -224,11 +218,7 @@ define(
                 }(),
               _objectExotic,
               _objectLiteral = {},
-              _objectInstance = new Object,
-              _objectConversionCustom = Object( _objectCustom ),
-              _objectConversionExotic,
-              _objectConversionLiteral = Object( _objectLiteral ),
-              _objectConversionInstance = Object( _objectInstance );
+              _objectInstance = new Object;
 
             expect( typeof _objectCustom === typeOf(_objectCustom) ).toBe( true ),
             expect( typeOf(_objectCustom) ).toBe('object');
@@ -243,21 +233,7 @@ define(
             expect( typeof _objectLiteral === typeOf(_objectLiteral) ).toBe( true ),
             expect( typeOf(_objectLiteral) ).toBe('object'),
             expect( typeof _objectInstance === typeOf(_objectInstance) ).toBe( true ),
-            expect( typeOf(_objectInstance) ).toBe('object'),
-            expect( typeof _objectConversionCustom === typeOf(_objectConversionCustom) ).toBe( true ),
-            expect( typeOf(_objectConversionCustom) ).toBe('object');
-
-            if( typeof _objectExotic !== 'undefined' ) {
-              _objectConversionExotic = Object( _objectExotic ),
-
-              expect( typeof _objectConversionExotic === typeOf(_objectConversionExotic) ).toBe( true ),
-              expect( typeOf(_objectConversionExotic) ).toBe('object');
-            }
-
-            expect( typeof _objectConversionLiteral === typeOf(_objectConversionLiteral) ).toBe( true ),
-            expect( typeOf(_objectConversionLiteral) ).toBe('object'),
-            expect( typeof _objectConversionInstance === typeOf(_objectConversionInstance) ).toBe( true ),
-            expect( typeOf(_objectConversionInstance) ).toBe('object');
+            expect( typeOf(_objectInstance) ).toBe('object');
           }
         ),
 
@@ -265,19 +241,13 @@ define(
           'determines regExp',
           function () {
             var
-              _regExpLiteral = /^[a-z]{1,2}$/ig,
-              _regExpObject = RegExp('^[-_]?' + '[a-z]*$'),
-              _regExpConversionLiteral = Object( _regExpLiteral ),
-              _regExpConversionObject = Object( _regExpObject );
+              _regExpLiteral = /^[a-z]{1,2}$/gi,
+              _regExpObject = RegExp('^[-_]?' + '[a-z]*$');
 
             expect( typeof _regExpLiteral !== typeOf(_regExpLiteral) ).toBe( true ),
             expect( typeOf(_regExpLiteral) ).toBe('regExp'),
             expect( typeof _regExpObject !== typeOf(_regExpObject) ).toBe( true ),
-            expect( typeOf(_regExpObject) ).toBe('regExp'),
-            expect( typeof _regExpConversionLiteral !== typeOf(_regExpConversionLiteral) ).toBe( true ),
-            expect( typeOf(_regExpConversionLiteral) ).toBe('regExp'),
-            expect( typeof _regExpConversionObject !== typeOf(_regExpConversionObject) ).toBe( true ),
-            expect( typeOf(_regExpConversionObject) ).toBe('regExp');
+            expect( typeOf(_regExpObject) ).toBe('regExp');
           }
         ),
 
@@ -285,23 +255,14 @@ define(
           'determines string',
           function () {
             var
-              _stringObjectEmpty = new String,
-              _stringObjectValue = new String('foo'),
+              _stringObject = new String,
               _stringPrimitive = '',
-              _stringConversionObjectEmpty = Object( _stringObjectEmpty ),
-              _stringConversionObjectValue = Object( _stringObjectValue ),
               _stringConversionPrimitive = Object( _stringPrimitive );
 
-            expect( typeof _stringObjectEmpty !== typeOf(_stringObjectEmpty) ).toBe( true ),
-            expect( typeOf(_stringObjectEmpty) ).toBe('string'),
-            expect( typeof _stringObjectValue !== typeOf(_stringObjectValue) ).toBe( true ),
-            expect( typeOf(_stringObjectValue) ).toBe('string'),
+            expect( typeof _stringObject !== typeOf(_stringObject) ).toBe( true ),
+            expect( typeOf(_stringObject) ).toBe('string'),
             expect( typeof _stringPrimitive === typeOf(_stringPrimitive) ).toBe( true ),
             expect( typeOf(_stringPrimitive) ).toBe('string'),
-            expect( typeof _stringConversionObjectEmpty !== typeOf(_stringConversionObjectEmpty) ).toBe( true ),
-            expect( typeOf(_stringConversionObjectEmpty) ).toBe('string'),
-            expect( typeof _stringConversionObjectValue !== typeOf(_stringConversionObjectValue) ).toBe( true ),
-            expect( typeOf(_stringConversionObjectValue) ).toBe('string'),
             expect( typeof _stringConversionPrimitive !== typeOf(_stringConversionPrimitive) ).toBe( true ),
             expect( typeOf(_stringConversionPrimitive) ).toBe('string');
           }
