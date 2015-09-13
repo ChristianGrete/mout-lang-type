@@ -2,6 +2,8 @@
 
 cd "$( dirname "$0" )/..";
 
+sh bin/install.sh;
+
 echo "\r\nPlease specify the version sequence to bump (e.g. major, minor or patch):";
 
 read version && grunt bump:$version --verbose;
