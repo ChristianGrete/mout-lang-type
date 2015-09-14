@@ -66,12 +66,6 @@ module.exports = function ( $grunt ) {
               'tests': '<%= cfg.PATH__TESTS %>/<%= cfg.GLOB__RUNNER_TEMP_HTML %>'
             },
           'copy': {
-              'fwd': {
-                  'cwd': '<%= cfg.PATH__FWD %>',
-                  'dest': '<%= cfg.PATH__ROOT %>',
-                  'expand': true,
-                  'src': '<%= cfg.GLOB__JS__RECURSIVE %>'
-                },
               'src': {
                   'cwd': '<%= cfg.PATH__SRC %>',
                   'dest': '<%= cfg.PATH__DIST__AMD %>',
@@ -82,6 +76,15 @@ module.exports = function ( $grunt ) {
           'exec': {
               'commit': 'git commit -m "release(v<%= pkg.version %>): distribute"',
               'tag': 'git tag -a v<%= pkg.version %> -m "<%= grunt.option(\'tagMessage\') %>"'
+            },
+          'generate-forwardings': {
+              'cjs': [
+                  '<%= cfg.PATH__DIST__CJS %>/<%= cfg.GLOB__LANG_JS %>',
+                  '<%= cfg.PATH__DIST__CJS + cfg.PATH__LANG.substr(1) %>/<%= cfg.GLOB__JS__RECURSIVE %>'
+                ],
+              'options': {
+                'nestingLevel': 2
+                }
             },
           'jasmine': {
               'src': {
@@ -103,7 +106,6 @@ module.exports = function ( $grunt ) {
               'options': {
                   'jshintrc': true
                 },
-              'fwd': '<%= cfg.PATH__FWD %>/<%= cfg.GLOB__JS__RECURSIVE %>',
               'src': '<%= cfg.PATH__SRC %>/<%= cfg.GLOB__JS__RECURSIVE %>',
               'tests': '<%= cfg.PATH__TESTS %>/<%= cfg.GLOB__JS__RECURSIVE %>'
             },
