@@ -32,28 +32,28 @@ You can load and use this extension as a module using the AMD or CommonJS API:
 ```js
 // Load the overall module:
 var
-  _moutLangType = require('mout-lang-type');
+  moutLangType = require('mout-lang-type');
 
 // Use the overall module:
-_moutLangType.lang.typeOf( null ) === 'null'; // true
-_moutLangType.lang.isType( null, 'object' ); // false
+moutLangType.lang.typeOf( null ) === 'null'; // true
+moutLangType.lang.isType( null, 'object' ); // false
 
 // Load all lang utilities:
 var
-  _lang = require('mout-lang-type/lang');
+  lang = require('mout-lang-type/lang');
 
 // Use the lang utilities:
-_lang.typeOf( new Date ) === 'date'; // true
-_lang.isType( new String('foo'), 'string' ); // true
+lang.typeOf( new Date ) === 'date'; // true
+lang.isType( new String('foo'), 'string' ); // true
 
 // Load the individual utilities:
 var
-  _isType = require('mout-lang-type/lang/isType');
-  _typeOf = require('mout-lang-type/lang/typeOf');
+  isType = require('mout-lang-type/lang/isType');
+  typeOf = require('mout-lang-type/lang/typeOf');
 
 // Use the individual utilities:
-_typeOf( [1, 2, 3] ) === 'array'; // true
-_isType( new RegExp, 'regExp'); // true
+typeOf( [1, 2, 3] ) === 'array'; // true
+isType( new RegExp, 'regExp'); // true
 ```
 Keep in mind that the module’s name `mout-lang-type` in AMD is actually just the module’s root directory and can differ from the example above depending on your deployed scripts directory structure.
 

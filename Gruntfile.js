@@ -3,9 +3,9 @@ const
   _URL__NPM_MANIFEST_FILE = './package.json';
 
 var
-  _gruntRegisterTasks = require('grunt-register-tasks'),
-  _loadGruntTasks = require('load-grunt-tasks'),
-  _timeGrunt = require('time-grunt');
+  gruntRegisterTasks = require('grunt-register-tasks'),
+  loadGruntTasks = require('load-grunt-tasks'),
+  timeGrunt = require('time-grunt');
 
 module.exports = function ( $grunt ) {
 
@@ -190,11 +190,11 @@ module.exports = function ( $grunt ) {
             ]
         };
 
-    _timeGrunt( $grunt ),
+    timeGrunt( $grunt ),
 
     $grunt.initConfig( _config ),
 
-    _loadGruntTasks(
+    loadGruntTasks(
       $grunt,
       {
         pattern: _plugins,
@@ -202,7 +202,7 @@ module.exports = function ( $grunt ) {
       }
     ),
 
-    _gruntRegisterTasks(
+    gruntRegisterTasks(
       $grunt,
       _tasks
     );
