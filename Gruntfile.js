@@ -1,6 +1,7 @@
 const
   _URL__GRUNT_CONFIG_FILE = './config/grunt.json',
-  _URL__NPM_MANIFEST_FILE = './package.json';
+  _URL__NPM_MANIFEST_FILE = './package.json',
+  _URL__TASKS_DIRECTORY = './tasks';
 
 var
   gruntRegisterTasks = require('grunt-register-tasks'),
@@ -201,6 +202,8 @@ module.exports = function ( $grunt ) {
         scope: 'devDependencies'
       }
     ),
+
+    $grunt.loadTasks( _URL__TASKS_DIRECTORY ),
 
     gruntRegisterTasks(
       $grunt,
