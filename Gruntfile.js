@@ -28,6 +28,15 @@ module.exports = function ( $grunt ) {
         ],
 
       _config = {
+          'alias': {
+              'cjs': [
+                  '<%= cfg.PATH__DIST__CJS %>/<%= cfg.GLOB__LANG_JS %>',
+                  '<%= cfg.PATH__DIST__CJS + cfg.PATH__LANG.substr(1) %>/<%= cfg.GLOB__JS__RECURSIVE %>'
+                ],
+              'options': {
+                'levels': 2
+                }
+            },
           'browserSync': {
               'bsFiles': {
                   'src': '<%= cfg.PATH__DOCS %>/<%= cfg.GLOB__ANY_FILE__RECURSIVE %>'
@@ -76,15 +85,6 @@ module.exports = function ( $grunt ) {
           'exec': {
               'commit': 'git commit -m "release(v<%= pkg.version %>): distribute"',
               'tag': 'git tag -a v<%= pkg.version %> -m "<%= grunt.option(\'tagMessage\') %>"'
-            },
-          'generate-forwardings': {
-              'cjs': [
-                  '<%= cfg.PATH__DIST__CJS %>/<%= cfg.GLOB__LANG_JS %>',
-                  '<%= cfg.PATH__DIST__CJS + cfg.PATH__LANG.substr(1) %>/<%= cfg.GLOB__JS__RECURSIVE %>'
-                ],
-              'options': {
-                'nestingLevel': 2
-                }
             },
           'jasmine': {
               'src': {
@@ -176,7 +176,8 @@ module.exports = function ( $grunt ) {
               'clean',
               'copy',
               'nodefy',
-              'string-replace'
+              'string-replace',
+              'alias'
             ],
           'default': [
               'jsonlint',
