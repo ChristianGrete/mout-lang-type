@@ -61,7 +61,8 @@ module.exports = function ( $grunt ) {
               'fwd': [
                   '<%= cfg.PATH__LANG %>',
                   '<%= cfg.PATH__ROOT %>/<%= cfg.GLOB__LANG_JS %>'
-                ]
+                ],
+              'tests': '<%= cfg.PATH__TESTS %>/<%= cfg.GLOB__RUNNER_TEMP_HTML %>'
             },
           'copy': {
               'fwd': {
@@ -127,7 +128,7 @@ module.exports = function ( $grunt ) {
             },
           'nodefy': {
               'src': {
-                  'cwd': '<%= cfg.PATH__SRC %>',
+                  'cwd': '<%= cfg.PATH__DIST__AMD %>',
                   'dest': '<%= cfg.PATH__DIST__CJS %>',
                   'expand': true,
                   'src': '<%= cfg.GLOB__JS__RECURSIVE %>'
@@ -169,7 +170,6 @@ module.exports = function ( $grunt ) {
 
       _tasks = {
           'build': [
-              'default',
               'clean',
               'copy',
               'nodefy',
