@@ -76,7 +76,7 @@ module.exports = function ( $grunt ) {
             },
           'copy': {
               'src': {
-                  'cwd': '<%= cfg.PATH__SRC %>',
+                  'cwd': '<%= cfg.PATH__SRC__JS %>',
                   'dest': '<%= cfg.PATH__DIST__AMD %>',
                   'expand': true,
                   'src': '<%= cfg.GLOB__JS__RECURSIVE %>'
@@ -99,14 +99,14 @@ module.exports = function ( $grunt ) {
           'jsdoc': {
               'src': {
                   'dest': '<%= cfg.PATH__DOCS %>',
-                  'src': '<%= cfg.PATH__SRC %>/<%= cfg.GLOB__JS__RECURSIVE %>'
+                  'src': '<%= cfg.PATH__SRC__JS %>/<%= cfg.GLOB__JS__RECURSIVE %>'
                 }
             },
           'jshint': {
               'options': {
                   'jshintrc': true
                 },
-              'src': '<%= cfg.PATH__SRC %>/<%= cfg.GLOB__JS__RECURSIVE %>',
+              'src': '<%= cfg.PATH__SRC__JS %>/<%= cfg.GLOB__JS__RECURSIVE %>',
               'tests': '<%= cfg.PATH__TESTS %>/<%= cfg.GLOB__JS__RECURSIVE %>'
             },
           'jsonlint': {
@@ -163,7 +163,7 @@ module.exports = function ( $grunt ) {
                   'files': '<%= cfg.PATH__DOCS %>/<%= cfg.GLOB__ANY_FILE__RECURSIVE %>'
                 },
               'src': {
-                  'files': '<%= cfg.PATH__SRC %>/<%= cfg.GLOB__JS__RECURSIVE %>',
+                  'files': '<%= cfg.PATH__SRC__JS %>/<%= cfg.GLOB__JS__RECURSIVE %>',
                   'tasks': [
                       'jsdoc'
                     ]
