@@ -27,6 +27,7 @@
     "npm-debug.log",
     "package.json",
     "src/",
+    "tasks",
     "tests/"
   ],
   "keywords": [
