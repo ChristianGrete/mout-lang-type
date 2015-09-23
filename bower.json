@@ -20,6 +20,7 @@
     ".tm_properties",
     "bin/",
     "config/",
+    "data/",
     "docs/",
     "Gruntfile.js",
     "node_modules/",
