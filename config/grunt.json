@@ -14,7 +14,7 @@
   "PATH__DOCS": "./docs",
   "PATH__LANG": "./lang",
   "PATH__ROOT": ".",
-  "PATH__SRC": "./src",
+  "PATH__SRC__JS": "./src/js",
   "PATH__TESTS": "./tests",
   "PATH__TESTS__HELPERS": "./tests/helpers",
   "PATH__TESTS__SPECS": "./tests/specs"

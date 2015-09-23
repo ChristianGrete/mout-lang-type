@@ -1,7 +1,6 @@
 const
   _URL__GRUNT_CONFIG_FILE = './config/grunt.json',
-  _URL__NPM_MANIFEST_FILE = './package.json',
-  _URL__TASKS_DIRECTORY = './tasks';
+  _URL__NPM_MANIFEST_FILE = './package.json';
 
 var
   gruntRegisterTasks = require('grunt-register-tasks'),
@@ -16,6 +15,7 @@ module.exports = function ( $grunt ) {
       _$grunt__file__readJSON = _$grunt__file.readJSON,
 
       _plugins = [
+          'grunt-alias-npm-submodules',
           'grunt-browser-sync',
           'grunt-bump',
           'grunt-contrib-*',
@@ -76,7 +76,7 @@ module.exports = function ( $grunt ) {
             },
           'copy': {
               'src': {
-                  'cwd': '<%= cfg.PATH__SRC %>',
+                  'cwd': '<%= cfg.PATH__SRC__JS %>',
                   'dest': '<%= cfg.PATH__DIST__AMD %>',
                   'expand': true,
                   'src': '<%= cfg.GLOB__JS__RECURSIVE %>'
@@ -99,14 +99,14 @@ module.exports = function ( $grunt ) {
           'jsdoc': {
               'src': {
                   'dest': '<%= cfg.PATH__DOCS %>',
-                  'src': '<%= cfg.PATH__SRC %>/<%= cfg.GLOB__JS__RECURSIVE %>'
+                  'src': '<%= cfg.PATH__SRC__JS %>/<%= cfg.GLOB__JS__RECURSIVE %>'
                 }
             },
           'jshint': {
               'options': {
                   'jshintrc': true
                 },
-              'src': '<%= cfg.PATH__SRC %>/<%= cfg.GLOB__JS__RECURSIVE %>',
+              'src': '<%= cfg.PATH__SRC__JS %>/<%= cfg.GLOB__JS__RECURSIVE %>',
               'tests': '<%= cfg.PATH__TESTS %>/<%= cfg.GLOB__JS__RECURSIVE %>'
             },
           'jsonlint': {
@@ -163,7 +163,7 @@ module.exports = function ( $grunt ) {
                   'files': '<%= cfg.PATH__DOCS %>/<%= cfg.GLOB__ANY_FILE__RECURSIVE %>'
                 },
               'src': {
-                  'files': '<%= cfg.PATH__SRC %>/<%= cfg.GLOB__JS__RECURSIVE %>',
+                  'files': '<%= cfg.PATH__SRC__JS %>/<%= cfg.GLOB__JS__RECURSIVE %>',
                   'tasks': [
                       'jsdoc'
                     ]
@@ -205,8 +205,6 @@ module.exports = function ( $grunt ) {
         scope: 'devDependencies'
       }
     ),
-
-    $grunt.loadTasks( _URL__TASKS_DIRECTORY ),
 
     gruntRegisterTasks(
       $grunt,
