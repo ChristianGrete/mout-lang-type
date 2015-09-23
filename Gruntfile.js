@@ -1,7 +1,6 @@
 const
   _URL__GRUNT_CONFIG_FILE = './config/grunt.json',
-  _URL__NPM_MANIFEST_FILE = './package.json',
-  _URL__TASKS_DIRECTORY = './tasks';
+  _URL__NPM_MANIFEST_FILE = './package.json';
 
 var
   gruntRegisterTasks = require('grunt-register-tasks'),
@@ -16,6 +15,7 @@ module.exports = function ( $grunt ) {
       _$grunt__file__readJSON = _$grunt__file.readJSON,
 
       _plugins = [
+          'grunt-alias-npm-submodules',
           'grunt-browser-sync',
           'grunt-bump',
           'grunt-contrib-*',
@@ -205,8 +205,6 @@ module.exports = function ( $grunt ) {
         scope: 'devDependencies'
       }
     ),
-
-    $grunt.loadTasks( _URL__TASKS_DIRECTORY ),
 
     gruntRegisterTasks(
       $grunt,
