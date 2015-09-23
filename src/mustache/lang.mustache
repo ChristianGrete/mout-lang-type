@@ -13,13 +13,17 @@ define(
      * @author Christian Grete <webmaster@christiangrete.com>
      * @license MIT
      * @namespace {object} module:mout-lang-type.lang
-     * @property {function} isType Checks whether a value is of a type
-     * @property {function} typeOf Gets the type of a value
+  {{#lang}}
+     * @property {{=[[ ]]=}}{[[type]]}[[={{ }}=]] {{name}} {{description}}
+  {{/lang}}
      */
 
     return {
-        'isType': require('./lang/isType'),
-        'typeOf': require('./lang/typeOf')
+      {{#lang}}
+        '{{name}}': require('./lang/{{name}}'){{^last}},
+        {{/last}}
+      {{/lang}}
+
       };
   }
 );
