@@ -10,7 +10,6 @@ bower_components/
 bower.json
 config/
 docs/
-fwd/
 Gruntfile.js
 npm-debug.log
 src/

@@ -21,7 +21,6 @@
     "bin/",
     "config/",
     "docs/",
-    "fwd/",
     "Gruntfile.js",
     "node_modules/",
     "npm-debug.log",
