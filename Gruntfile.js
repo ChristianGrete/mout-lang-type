@@ -24,6 +24,7 @@ module.exports = function ( $grunt ) {
           'grunt-jsdoc',
           'grunt-jsonlint',
           'grunt-modify-json',
+          'grunt-mustache-render',
           'grunt-string-replace'
         ],
 
@@ -129,6 +130,27 @@ module.exports = function ( $grunt ) {
                     }
                 }
             },
+          'mustache_render': {
+              'module': {
+                  'cwd': '<%= cfg.PATH__SRC__MUSTACHE %>',
+                  'data': '<%= cfg.PATH__DATA %>/<%= cfg.GLOB__MODULE_JSON %>',
+                  'dest': '<%= cfg.PATH__DIST__AMD %>',
+                  'expand': true,
+                  'ext': '.js',
+                  'src': '<%= cfg.GLOB__INDEX_MUSTACHE %>'
+                },
+              'namespaces': {
+                  'cwd': '<%= cfg.PATH__SRC__MUSTACHE %>',
+                  'data': '<%= cfg.PATH__DATA %>/<%= cfg.GLOB__NAMESPACES_JSON %>',
+                  'dest': '<%= cfg.PATH__DIST__AMD %>',
+                  'expand': true,
+                  'ext': '.js',
+                  'src': [
+                      '<%= cfg.GLOB__MUSTACHE %>',
+                      '!<%= cfg.GLOB__INDEX_MUSTACHE %>'
+                    ]
+                }
+            },
           'nodefy': {
               'src': {
                   'cwd': '<%= cfg.PATH__DIST__AMD %>',
@@ -174,6 +196,7 @@ module.exports = function ( $grunt ) {
       _tasks = {
           'build': [
               'clean',
+              'mustache_render',
               'copy',
               'nodefy',
               'string-replace',
