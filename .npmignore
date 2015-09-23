@@ -13,5 +13,4 @@ docs/
 Gruntfile.js
 npm-debug.log
 src/
-tasks/
 tests/
