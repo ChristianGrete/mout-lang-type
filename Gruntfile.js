@@ -97,9 +97,9 @@ module.exports = function ( $grunt ) {
                 }
             },
           'jsdoc': {
-              'dist': {
+              'src': {
                   'dest': '<%= cfg.PATH__DOCS %>',
-                  'src': '<%= cfg.PATH__DIST__AMD %>/<%= cfg.GLOB__JS__RECURSIVE %>'
+                  'src': '<%= cfg.PATH__SRC %>/<%= cfg.GLOB__JS__RECURSIVE %>'
                 }
             },
           'jshint': {
@@ -166,7 +166,8 @@ module.exports = function ( $grunt ) {
               'src': {
                   'files': '<%= cfg.PATH__SRC %>/<%= cfg.GLOB__JS__RECURSIVE %>',
                   'tasks': [
-                      'build',
+                      'default',
+                      'jasmine',
                       'jsdoc'
                     ]
                 }
@@ -175,8 +176,7 @@ module.exports = function ( $grunt ) {
 
       _tasks = {
           'build': [
-              'clean:dist',
-              'clean:fwd',
+              'clean',
               'copy',
               'nodefy',
               'string-replace',
@@ -187,15 +187,14 @@ module.exports = function ( $grunt ) {
               'jshint'
             ],
           'serve': [
-              'clean:docs',
-              'build',
+              'test',
               'jsdoc',
               'browserSync',
               'watch'
             ],
           'test': [
               'default',
-              'clean:tests',
+              'clean',
               'jasmine'
             ]
         };
