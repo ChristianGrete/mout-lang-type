@@ -31,7 +31,7 @@ module.exports = function ( $grunt ) {
       _config = {
           'alias': {
               'cjs': [
-                  '<%= cfg.PATH__DIST__CJS %>/<%= cfg.GLOB__LANG_JS %>',
+                  '<%= cfg.PATH__DIST__CJS %>/<%= cfg.FILE__LANG_JS %>',
                   '<%= cfg.PATH__DIST__CJS + cfg.PATH__LANG.substr(1) %>/<%= cfg.GLOB__JS__RECURSIVE %>'
                 ],
               'options': {
@@ -71,9 +71,9 @@ module.exports = function ( $grunt ) {
               'docs': '<%= cfg.PATH__DOCS %>',
               'fwd': [
                   '<%= cfg.PATH__LANG %>',
-                  '<%= cfg.PATH__ROOT %>/<%= cfg.GLOB__LANG_JS %>'
+                  '<%= cfg.PATH__ROOT %>/<%= cfg.FILE__LANG_JS %>'
                 ],
-              'tests': '<%= cfg.PATH__TESTS %>/<%= cfg.GLOB__RUNNER_TEMP_HTML %>'
+              'tests': '<%= cfg.PATH__TESTS %>/<%= cfg.FILE__RUNNER_TEMP_HTML %>'
             },
           'copy': {
               'src': {
@@ -91,7 +91,7 @@ module.exports = function ( $grunt ) {
               'src': {
                   'options': {
                       'helpers': '<%= cfg.PATH__TESTS__HELPERS %>/<%= cfg.GLOB__JS__RECURSIVE %>',
-                      'outfile': '<%= cfg.PATH__TESTS %>/<%= cfg.GLOB__RUNNER_TEMP_HTML %>',
+                      'outfile': '<%= cfg.PATH__TESTS %>/<%= cfg.FILE__RUNNER_TEMP_HTML %>',
                       'specs': '<%= cfg.PATH__TESTS__SPECS %>/<%= cfg.GLOB__JS__RECURSIVE %>',
                       'template': require('grunt-template-jasmine-requirejs')
                     }
@@ -113,7 +113,7 @@ module.exports = function ( $grunt ) {
           'jsonlint': {
               'config': [
                   '<%= cfg.PATH__CONFIG %>/<%= cfg.GLOB__JSON__RECURSIVE %>',
-                  '<%= cfg.PATH__ROOT %>/<%= cfg.GLOB__JSHINTRC %>'
+                  '<%= cfg.PATH__ROOT %>/<%= cfg.FILE__JSHINTRC %>'
                 ],
               'manifests': '<%= cfg.PATH__ROOT %>/<%= cfg.GLOB__MANIFESTS %>'
             },
@@ -134,21 +134,21 @@ module.exports = function ( $grunt ) {
           'mustache_render': {
               'module': {
                   'cwd': '<%= cfg.PATH__SRC__MUSTACHE %>',
-                  'data': '<%= cfg.PATH__DATA %>/<%= cfg.GLOB__MODULE_JSON %>',
+                  'data': '<%= cfg.PATH__DATA %>/<%= cfg.FILE__MODULE_JSON %>',
                   'dest': '<%= cfg.PATH__DIST__AMD %>',
                   'expand': true,
                   'ext': '.js',
-                  'src': '<%= cfg.GLOB__INDEX_MUSTACHE %>'
+                  'src': '<%= cfg.FILE__INDEX_MUSTACHE %>'
                 },
               'namespaces': {
                   'cwd': '<%= cfg.PATH__SRC__MUSTACHE %>',
-                  'data': '<%= cfg.PATH__DATA %>/<%= cfg.GLOB__NAMESPACES_JSON %>',
+                  'data': '<%= cfg.PATH__DATA %>/<%= cfg.FILE__NAMESPACES_JSON %>',
                   'dest': '<%= cfg.PATH__DIST__AMD %>',
                   'expand': true,
                   'ext': '.js',
                   'src': [
                       '<%= cfg.GLOB__MUSTACHE %>',
-                      '!<%= cfg.GLOB__INDEX_MUSTACHE %>'
+                      '!<%= cfg.FILE__INDEX_MUSTACHE %>'
                     ]
                 }
             },
