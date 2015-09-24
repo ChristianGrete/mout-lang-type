@@ -98,9 +98,9 @@ module.exports = function ( $grunt ) {
                 }
             },
           'jsdoc': {
-              'src': {
+              'dist': {
                   'dest': '<%= cfg.PATH__DOCS %>',
-                  'src': '<%= cfg.PATH__SRC__JS %>/<%= cfg.GLOB__JS__RECURSIVE %>'
+                  'src': '<%= cfg.PATH__DIST__AMD %>/<%= cfg.GLOB__JS__RECURSIVE %>'
                 }
             },
           'jshint': {
@@ -186,8 +186,13 @@ module.exports = function ( $grunt ) {
                   'files': '<%= cfg.PATH__DOCS %>/<%= cfg.GLOB__ANY_FILE__RECURSIVE %>'
                 },
               'src': {
-                  'files': '<%= cfg.PATH__SRC__JS %>/<%= cfg.GLOB__JS__RECURSIVE %>',
+                  'files': [
+                      '<%= cfg.PATH__DATA %>/<%= cfg.GLOB__JSON__RECURSIVE %>',
+                      '<%= cfg.PATH__SRC__JS %>/<%= cfg.GLOB__JS__RECURSIVE %>',
+                      '<%= cfg.PATH__SRC__MUSTACHE %>/<%= cfg.GLOB__MUSTACHE__RECURSIVE %>'
+                    ],
                   'tasks': [
+                      'build',
                       'jsdoc'
                     ]
                 }
@@ -196,7 +201,8 @@ module.exports = function ( $grunt ) {
 
       _tasks = {
           'build': [
-              'clean',
+              'clean:dist',
+              'clean:fwd',
               'mustache_render',
               'copy',
               'nodefy',
@@ -208,12 +214,15 @@ module.exports = function ( $grunt ) {
               'jshint'
             ],
           'serve': [
+              'clean:docs',
+              'build',
               'jsdoc',
               'browserSync',
               'watch'
             ],
           'test': [
               'default',
+              'clean:tests',
               'jasmine'
             ]
         };

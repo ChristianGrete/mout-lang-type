@@ -11,6 +11,7 @@
   "GLOB__JSON__RECURSIVE": "**/*.json",
   "GLOB__MANIFESTS": "{bower,package}.json",
   "GLOB__MUSTACHE": "*.mustache",
+  "GLOB__MUSTACHE__RECURSIVE": "**/*.mustache",
   "PATH__CONFIG": "./config",
   "PATH__DATA": "./data",
   "PATH__DIST": "./dist",
