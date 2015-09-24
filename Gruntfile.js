@@ -24,7 +24,6 @@ module.exports = function ( $grunt ) {
           'grunt-jsdoc',
           'grunt-jsonlint',
           'grunt-modify-json',
-          'grunt-mustache-render',
           'grunt-string-replace'
         ],
 
@@ -131,27 +130,6 @@ module.exports = function ( $grunt ) {
                     }
                 }
             },
-          'mustache_render': {
-              'module': {
-                  'cwd': '<%= cfg.PATH__SRC__MUSTACHE %>',
-                  'data': '<%= cfg.PATH__DATA %>/<%= cfg.FILE__MODULE_JSON %>',
-                  'dest': '<%= cfg.PATH__DIST__AMD %>',
-                  'expand': true,
-                  'ext': '.js',
-                  'src': '<%= cfg.FILE__INDEX_MUSTACHE %>'
-                },
-              'namespaces': {
-                  'cwd': '<%= cfg.PATH__SRC__MUSTACHE %>',
-                  'data': '<%= cfg.PATH__DATA %>/<%= cfg.FILE__NAMESPACES_JSON %>',
-                  'dest': '<%= cfg.PATH__DIST__AMD %>',
-                  'expand': true,
-                  'ext': '.js',
-                  'src': [
-                      '<%= cfg.GLOB__MUSTACHE %>',
-                      '!<%= cfg.FILE__INDEX_MUSTACHE %>'
-                    ]
-                }
-            },
           'nodefy': {
               'src': {
                   'cwd': '<%= cfg.PATH__DIST__AMD %>',
@@ -186,11 +164,7 @@ module.exports = function ( $grunt ) {
                   'files': '<%= cfg.PATH__DOCS %>/<%= cfg.GLOB__ANY_FILE__RECURSIVE %>'
                 },
               'src': {
-                  'files': [
-                      '<%= cfg.PATH__DATA %>/<%= cfg.GLOB__JSON__RECURSIVE %>',
-                      '<%= cfg.PATH__SRC__JS %>/<%= cfg.GLOB__JS__RECURSIVE %>',
-                      '<%= cfg.PATH__SRC__MUSTACHE %>/<%= cfg.GLOB__MUSTACHE__RECURSIVE %>'
-                    ],
+                  'files': '<%= cfg.PATH__SRC__JS %>/<%= cfg.GLOB__JS__RECURSIVE %>',
                   'tasks': [
                       'build',
                       'jsdoc'
@@ -203,7 +177,6 @@ module.exports = function ( $grunt ) {
           'build': [
               'clean:dist',
               'clean:fwd',
-              'mustache_render',
               'copy',
               'nodefy',
               'string-replace',
