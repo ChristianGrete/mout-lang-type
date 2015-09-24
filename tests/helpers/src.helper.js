@@ -3,7 +3,7 @@
 require.config(
   {
     'paths': {
-        'mout-lang-type': '../src/js'
+        'mout-lang-type': '../src'
       }
   }
 );
