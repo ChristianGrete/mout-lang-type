@@ -1,5 +1,6 @@
 # mout-lang-type
 
+[![Travis CI](https://img.shields.io/travis/ChristianGrete/mout-lang-type.svg)](https://travis-ci.org/ChristianGrete/mout-lang-type)
 [![Latest GitHub Tag](https://img.shields.io/github/tag/ChristianGrete/mout-lang-type.svg)](https://github.com/ChristianGrete/mout-lang-type/tags)
 [![Latest GitHub Release](https://img.shields.io/github/release/ChristianGrete/mout-lang-type.svg)](https://github.com/ChristianGrete/mout-lang-type/releases/latest)
 [![Total Downloads via GitHub](https://img.shields.io/github/downloads/ChristianGrete/mout-lang-type/latest/total.svg)](https://github.com/ChristianGrete/mout-lang-type/releases)
