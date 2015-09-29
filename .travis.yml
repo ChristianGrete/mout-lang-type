@@ -1,14 +1,13 @@
-language: node_js
-node_js:
-  - "iojs"
-  - "0.11"
-  - "0.12"
 before_install:
   - npm update -g npm
   - npm install -g grunt-cli
-install:
-  - bin/install.sh
-before_script:
-  - grunt test
+before_script: grunt test
+install: bin/install.sh
+language: node_js
+node_js:
+  - "0.11"
+  - "0.12"
+  - "iojs"
+  - "stable"
 script:
   - grunt build
