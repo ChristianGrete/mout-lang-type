@@ -1,7 +1,7 @@
-before_install:
-  - npm update -g npm
-  - npm install -g grunt-cli
-before_script: grunt test
+before_install: npm install -g grunt-cli
+before_script:
+  - grunt test
+  - grunt jsdoc
 install: bin/install.sh
 language: node_js
 node_js:
@@ -10,5 +10,7 @@ node_js:
   - "0.12"
   - "iojs"
   - "stable"
+notifications:
+  email: webmaster@christiangrete.com
 script:
   - grunt build
