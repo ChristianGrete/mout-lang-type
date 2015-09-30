@@ -24,7 +24,6 @@ define(
         ],
       _conversionObject = {},
       _hasOwnProperty,
-      _index = 0,
       _isArguments,
       _length = _builtInTags.length,
       _prototype = String.prototype,
@@ -33,12 +32,12 @@ define(
       _toLowerCase = _prototype.toLowerCase,
       _toString = _conversionObject.toString;
 
-    if( typeof Symbol === 'function' ) {
+    if( typeof Symbol === 'function') {
       _length = _builtInTags.push('Symbol');
     }
 
-    for( ; _index < _length; _index ++ ) {
-      _builtInTag = _builtInTags[ _index ],
+    while( _length -- ) {
+      _builtInTag = _builtInTags[ _length ],
 
       _conversionObject[
         '[object '
