@@ -14,12 +14,14 @@ define(
      * @license MIT
      * @namespace {object} module:mout-lang-type.lang
      * @property {function} instanceOf TODO
+     * @property {function} isPrimitive TODO
      * @property {function} isType Checks whether a value is of a type
      * @property {function} typeOf Gets the type of a value
      */
 
     return {
         'instanceOf': require('./lang/instanceOf'),
+        'isPrimitive': require('./lang/isPrimitive'),
         'isType': require('./lang/isType'),
         'typeOf': require('./lang/typeOf')
       };
