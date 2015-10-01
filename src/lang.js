@@ -1,6 +1,6 @@
 /**
  * @author Christian Grete <webmaster@christiangrete.com>
- * @copyright Christian Grete 2015
+ * @copyright &copy; 2015 Christian Grete
  * @file Provides all [lang]{@link module:mout-lang-type.lang} utilities
  * @license MIT
  */
