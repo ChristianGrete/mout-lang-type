@@ -12,10 +12,25 @@
 
 define(
   [
+    'mout-lang-type/lang/isPrimitive',
     'mout-lang-type/lang/isType',
     'mout-lang-type/lang/typeOf'
   ],
-  function ( isType, typeOf ) {
+  function ( isPrimitive, isType, typeOf ) {
+    describe(
+      'mout-lang-type/lang/isPrimitive',
+      function () {
+        it(
+          'is a function',
+          function () {
+            expect( typeof isPrimitive ).toBe('function');
+          }
+        );
+
+        // TODO: Add further descriptions!
+      }
+    ),
+
     describe(
       'mout-lang-type/lang/isType',
       function () {
