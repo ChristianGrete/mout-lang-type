@@ -6,7 +6,10 @@
  */
 
 define(
-  function () {
+  [
+    './isPrimitive'
+  ],
+  function ( isPrimitive ) {
 
     /**
      * TODO
@@ -15,6 +18,7 @@ define(
      * @license MIT
      * @param {mixed} $value TODO
      * @param {function} $constructor TODO
+     * @requires module:mout-lang-type.lang.isPrimitive
      * @returns {boolean} TODO
      * @summary TODO
      */
