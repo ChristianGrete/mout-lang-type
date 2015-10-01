@@ -1,7 +1,7 @@
 /**
  * @author Garrick Cheung <garrick@garrickcheung.com>
  * @author Christian Grete <webmaster@christiangrete.com>
- * @copyright &copy; 2014 Garrick Cheung &amp; Christian Grete
+ * @copyright &copy; 2014, 2015 Garrick Cheung &amp; Christian Grete
  * @file Provides the [isPrimitive]{@link module:mout-lang-type.lang.isPrimitive} utility
  * @license MIT
  */
