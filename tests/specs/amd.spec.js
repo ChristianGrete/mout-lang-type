@@ -12,11 +12,26 @@
 
 define(
   [
+    'mout-lang-type/lang/instanceOf',
     'mout-lang-type/lang/isPrimitive',
     'mout-lang-type/lang/isType',
     'mout-lang-type/lang/typeOf'
   ],
-  function ( isPrimitive, isType, typeOf ) {
+  function ( instanceOf, isPrimitive, isType, typeOf ) {
+    describe(
+      'mout-lang-type/lang/instanceOf',
+      function () {
+        it(
+          'is a function',
+          function () {
+            expect( typeof instanceOf ).toBe('function');
+          }
+        );
+
+        // TODO: Add further descriptions!
+      }
+    ),
+
     describe(
       'mout-lang-type/lang/isPrimitive',
       function () {
