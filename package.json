@@ -46,7 +46,7 @@
   "files": [
     "dist/**/*.js",
     "lang.js",
-    "lang/{isType,typeOf}.js"
+    "lang/{instanceOf,isPrimitive,isType,typeOf}.js"
   ],
   "homepage": "https://github.com/ChristianGrete/mout-lang-type",
   "keywords": [
