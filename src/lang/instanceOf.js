@@ -28,14 +28,6 @@ define(
           return false;
         }
 
-        if(
-          typeof $constructor !== 'function'
-            || !$constructor.hasOwnProperty('prototype')
-              || isPrimitive( $constructor.prototype )
-        ) {
-          return false;
-        }
-
         if( isPrimitive($value) ) {
           $value = Object( $value );
         }
