@@ -10,11 +10,12 @@
 
 > An extension to [mout](http://moutjs.com)/[lang](http://moutjs.com/docs/latest/lang.html) utilities for nerds
 
-__mout-lang-type__ is an extension to [MOUT](http://moutjs.com)’s _[lang](http://moutjs.com/docs/latest/lang.html)_ utilities. It provides two modules: A `typeOf` and an `isType` function to be used instead of the included `kindOf` and `isKind` functions. The difference is that __types__ are expressed in _lowerCamelCase_ and represent the built-in objects `[[Class]]` internal slot tags while MOUT’s __kinds__ are expressed in _UpperCamelCase_ representing the overall tags of objects, even of so-called _non-standard exotic_ objects:
+__mout-lang-type__ is an extension to [MOUT](http://moutjs.com)’s _[lang](http://moutjs.com/docs/latest/lang.html)_ utilities. It provides two major modules: A `typeOf` and an `isType` function to be used instead of the included `kindOf` and `isKind` functions. The difference is that __types__ are expressed in _lowerCamelCase_ and represent the built-in objects `[[Class]]` internal slot tags while MOUT’s __kinds__ are expressed in _UpperCamelCase_ representing the overall tags of objects, even of so-called _non-standard exotic_ objects:
 ```js
 kindOf( navigator ); // 'Navigator'
 typeOf( navigator ); // 'object'
 ```
+It also provides two additional modules: An `instanceOf` function that wraps and improves the native `instanceof` operator by supporting checks of primitive values and an `isPrimitive` function that checks values of their data types.
 
 ## Getting started
 
@@ -36,25 +37,35 @@ var
   moutLangType = require('mout-lang-type');
 
 // Use the overall module:
-moutLangType.lang.typeOf( null ) === 'null'; // true
+moutLangType.lang.instanceOf( [], Array ); // true
+moutLangType.lang.isPrimitive( new Boolean ); // false
 moutLangType.lang.isType( null, 'object' ); // false
+moutLangType.lang.typeOf( null ) === 'null'; // true
+
 
 // Load all lang utilities:
 var
   lang = require('mout-lang-type/lang');
 
 // Use the lang utilities:
-lang.typeOf( new Date ) === 'date'; // true
+lang.instanceOf( 1, Number ); // true
+lang.isPrimitive( false ); // true
 lang.isType( new String('foo'), 'string' ); // true
+lang.typeOf( new Date ) === 'date'; // true
+
 
 // Load the individual utilities:
 var
-  isType = require('mout-lang-type/lang/isType');
+  instanceOf = require('mout-lang-type/lang/instanceOf'),
+  isPrimitive = require('mout-lang-type/lang/isPrimitive'),
+  isType = require('mout-lang-type/lang/isType'),
   typeOf = require('mout-lang-type/lang/typeOf');
 
 // Use the individual utilities:
-typeOf( [1, 2, 3] ) === 'array'; // true
+instanceOf( Symbol(), Symbol ); // true
+isPrimitive('foo'); // true
 isType( new RegExp, 'regExp'); // true
+typeOf( [1, 2, 3] ) === 'array'; // true
 ```
 Keep in mind that the module’s name `mout-lang-type` in AMD is actually just the module’s root directory and can differ from the example above depending on your deployed scripts directory structure.
 
