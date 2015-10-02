@@ -12,34 +12,42 @@ define(
   function ( isPrimitive ) {
 
     /**
-     * TODO
+     * Returns whether the passed value is an instance of the specified constructor
      * @author Christian Grete <webmaster@christiangrete.com>
      * @function module:mout-lang-type.lang.instanceOf
      * @license MIT
-     * @param {mixed} $value TODO
-     * @param {function} $constructor TODO
+     * @param {mixed} $value The <code>object</code> or <code>primitive</code> whose prototype chain is to be checked
+     * @param {function} $constructor The <code>function</code> whose prototype property is to be compared against
      * @requires module:mout-lang-type.lang.isPrimitive
-     * @returns {boolean} TODO
-     * @summary TODO
+     * @returns {boolean} A <code>boolean</code> indicating the result of the prototypes comparison
+     * @summary Checks whether a value is an instance of a constructor
      */
 
     return function instanceOf ( $value, $constructor ) {
+        if( $value == null ) {
+          return false;
+        }
 
-        // TODO ----
-        // If Type(C) is not Object, throw a TypeError exception.
-        // Let instOfHandler be GetMethod(C,@@hasInstance).
-        // ReturnIfAbrupt(instOfHandler).
-        // If instOfHandler is not undefined, then
-        // Return ToBoolean(Call(instOfHandler, C, «O»)).
-        // If IsCallable(C) is false, throw a TypeError exception.
-        // Return OrdinaryHasInstance(C, O).
-        // NOTE Steps 5 and 6 provide compatibility with previous
-        // editions of ECMAScript that did not use a @@hasInstance
-        // method to define the instanceof operator semantics.
-        // If a function object does not define or inherit
-        // @@hasInstance it uses the default instanceof semantics.
+        if(
+          typeof $constructor !== 'function'
+            || !$constructor.hasOwnProperty('prototype')
+              || isPrimitive( $constructor.prototype )
+        ) {
+          return false;
+        }
 
-        return $value instanceof $constructor;
+        if( isPrimitive($value) ) {
+          $value = Object( $value );
+        }
+
+        return (
+            (
+              /*@cc_on@if(@_jscript_version<5.8)!@end@*/false
+                && !$value.hasOwnProperty
+            ) ?
+              false :
+                $value instanceof $constructor
+          );
       };
   }
 );

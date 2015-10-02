@@ -13,7 +13,7 @@ define(
      * @author Christian Grete <webmaster@christiangrete.com>
      * @license MIT
      * @namespace {object} module:mout-lang-type.lang
-     * @property {function} instanceOf TODO
+     * @property {function} instanceOf Checks whether a value is an instance of a constructor
      * @property {function} isPrimitive Checks whether a value is primitive
      * @property {function} isType Checks whether a value is of a type
      * @property {function} typeOf Gets the type of a value
