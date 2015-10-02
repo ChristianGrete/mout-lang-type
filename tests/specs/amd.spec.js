@@ -26,9 +26,21 @@ define(
           function () {
             expect( typeof instanceOf ).toBe('function');
           }
-        );
+        ),
 
-        // TODO: Add further descriptions!
+        it(
+          'works with primitives',
+          function () {
+            expect( instanceOf(false, Boolean) ).toBe( true ),
+            expect( instanceOf(true, Boolean) ).toBe( true ),
+            expect( instanceOf(0, Number) ).toBe( true ),
+            expect( instanceOf('', String) ).toBe( true );
+
+            if( typeof Symbol === 'function') {
+              expect( instanceOf(Symbol(), Symbol) ).toBe( true );
+            }
+          }
+        );
       }
     ),
 
@@ -40,9 +52,83 @@ define(
           function () {
             expect( typeof isPrimitive ).toBe('function');
           }
+        ),
+
+        it(
+          'determines primitive booleans',
+          function () {
+            expect( isPrimitive(false) ).toBe( true ),
+            expect( isPrimitive(true) ).toBe( true ),
+            expect( isPrimitive(new Boolean) ).toBe( false );
+          }
+        ),
+
+        it(
+          'determines null',
+          function () {
+            expect( isPrimitive(null) ).toBe( true );
+          }
+        ),
+
+        it(
+          'determines primitive numbers',
+          function () {
+            expect( isPrimitive(-1) ).toBe( true ),
+            expect( isPrimitive(0) ).toBe( true ),
+            expect( isPrimitive(1) ).toBe( true ),
+            expect( isPrimitive(2.5) ).toBe( true ),
+            expect( isPrimitive(Number.NaN) ).toBe( true ),
+            expect( isPrimitive(Number.NEGATIVE_INFINITY) ).toBe( true ),
+            expect( isPrimitive(Number.POSITIVE_INFINITY) ).toBe( true ),
+            expect( isPrimitive(new Number) ).toBe( false );
+          }
+        ),
+
+        it(
+          'determines primitive strings',
+          function () {
+            expect( isPrimitive('') ).toBe( true ),
+            expect( isPrimitive(new String) ).toBe( false );
+          }
         );
 
-        // TODO: Add further descriptions!
+        if( typeof Symbol === 'function') {
+          it(
+            'determines symbols',
+            function () {
+              var
+                _symbolObject = Object( Symbol() ),
+                _symbolPrimitive = Symbol();
+
+              expect( isPrimitive(_symbolPrimitive) ).toBe( true ),
+              expect( isPrimitive(_symbolObject) ).toBe( false );
+            }
+          );
+        }
+
+        it(
+          'determines undefined',
+          function () {
+            var
+              _UNDEF;
+
+            expect( isPrimitive() ).toBe( true ),
+            expect( isPrimitive(_UNDEF) ).toBe( true );
+          }
+        ),
+
+        it(
+          'determines non-primitives',
+          function () {
+            expect( isPrimitive(arguments) ).toBe( false ),
+            expect( isPrimitive([]) ).toBe( false ),
+            expect( isPrimitive(new Date) ).toBe( false ),
+            expect( isPrimitive(new Error) ).toBe( false ),
+            expect( isPrimitive(function () {}) ).toBe( false ),
+            expect( isPrimitive({}) ).toBe( false ),
+            expect( isPrimitive(/./) ).toBe( false );
+          }
+        );
       }
     ),
 
@@ -235,7 +321,7 @@ define(
                         return '[object Custom]';
                       };
 
-                  if( typeof Object.create === 'function' ) {
+                  if( typeof Object.create === 'function') {
                     Custom.prototype = Object.create(
                         null,
                         {
@@ -263,7 +349,7 @@ define(
             expect( typeof _objectCustom === typeOf(_objectCustom) ).toBe( true ),
             expect( typeOf(_objectCustom) ).toBe('object');
 
-            if( typeof navigator === 'object' ) {
+            if( typeof navigator === 'object') {
               _objectExotic = navigator,
 
               expect( typeof _objectExotic === typeOf(_objectExotic) ).toBe( true ),
@@ -308,7 +394,7 @@ define(
           }
         );
 
-        if( typeof Symbol === 'function' ) {
+        if( typeof Symbol === 'function') {
           it(
             'determines symbol',
             function () {
