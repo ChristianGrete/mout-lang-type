@@ -39,7 +39,7 @@ var
 // Use the overall module:
 moutLangType.lang.instanceOf( [], Array ); // true
 moutLangType.lang.isPrimitive( new Boolean ); // false
-moutLangType.lang.isType( null, 'object' ); // false
+moutLangType.lang.isType( null, 'object'); // false
 moutLangType.lang.typeOf( null ) === 'null'; // true
 
 
@@ -50,7 +50,7 @@ var
 // Use the lang utilities:
 lang.instanceOf( 1, Number ); // true
 lang.isPrimitive( false ); // true
-lang.isType( new String('foo'), 'string' ); // true
+lang.isType( new String('foo'), 'string'); // true
 lang.typeOf( new Date ) === 'date'; // true
 
 
