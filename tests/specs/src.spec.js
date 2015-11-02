@@ -6,7 +6,6 @@
  it: false,
  jasmine: false,
  navigator: false,
- requirejs: false,
  Symbol: false
 */
 
