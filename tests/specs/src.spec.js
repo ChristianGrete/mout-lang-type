@@ -4,7 +4,9 @@
  describe: false,
  expect: false,
  it: false,
+ jasmine: false,
  navigator: false,
+ requirejs: false,
  Symbol: false
 */
 
@@ -18,6 +20,32 @@ define(
     'mout-lang-type/lang/typeOf'
   ],
   function ( instanceOf, isPrimitive, isType, typeOf ) {
+    describe(
+      'mout-lang-type',
+      function () {
+        it(
+          'is ready to be tested',
+          function () {
+            expect( typeof requirejs ).toBe('function'),
+            expect( typeof requirejs.version ).toBe('string'),
+            expect( typeof jasmine ).toBe('object'),
+            expect( jasmine !== null ).toBe( true ),
+            expect( typeof jasmine.version ).toBe('string');
+          }
+        ),
+
+        it(
+          'is loaded with RequireJS v'
+            + requirejs.version
+        ),
+
+        it(
+          'is tested with Jasmine v'
+           + jasmine.version
+        );
+      }
+    ),
+
     describe(
       'mout-lang-type/lang/instanceOf',
       function () {

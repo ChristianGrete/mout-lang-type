@@ -2,6 +2,8 @@
   "FILE__JSHINTRC": ".jshintrc",
   "FILE__LANG_JS": "lang.js",
   "FILE__RUNNER_TEMP_HTML": "runner.temp.html",
+  "FILE__SRC_HELPER_JS": "src.helper.js",
+  "FILE__SRC_SPEC_JS": "src.spec.js",
   "GLOB__ANY_FILE__RECURSIVE": "**/*",
   "GLOB__INDEX_JS__RECURSIVE": "**/index.js",
   "GLOB__JS__RECURSIVE": "**/*.js",

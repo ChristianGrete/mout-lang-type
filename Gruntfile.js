@@ -89,9 +89,9 @@ module.exports = function ( $grunt ) {
           'jasmine': {
               'src': {
                   'options': {
-                      'helpers': '<%= cfg.PATH__TESTS__HELPERS %>/<%= cfg.GLOB__JS__RECURSIVE %>',
+                      'helpers': '<%= cfg.PATH__TESTS__HELPERS %>/<%= cfg.FILE__SRC_HELPER_JS %>',
                       'outfile': '<%= cfg.PATH__TESTS %>/<%= cfg.FILE__RUNNER_TEMP_HTML %>',
-                      'specs': '<%= cfg.PATH__TESTS__SPECS %>/<%= cfg.GLOB__JS__RECURSIVE %>',
+                      'specs': '<%= cfg.PATH__TESTS__SPECS %>/<%= cfg.FILE__SRC_SPEC_JS %>',
                       'template': require('grunt-template-jasmine-requirejs')
                     }
                 }
