@@ -82,7 +82,7 @@ define(
         ),
 
         it(
-          'determines primitive booleans',
+          'determines `boolean` primitives',
           function () {
             expect( isPrimitive(false) ).toBe( true ),
             expect( isPrimitive(true) ).toBe( true ),
@@ -91,14 +91,14 @@ define(
         ),
 
         it(
-          'determines null',
+          'determines `null`',
           function () {
             expect( isPrimitive(null) ).toBe( true );
           }
         ),
 
         it(
-          'determines primitive numbers',
+          'determines `number` primitives',
           function () {
             expect( isPrimitive(-1) ).toBe( true ),
             expect( isPrimitive(0) ).toBe( true ),
@@ -112,7 +112,7 @@ define(
         ),
 
         it(
-          'determines primitive strings',
+          'determines `string` primitives',
           function () {
             expect( isPrimitive('') ).toBe( true ),
             expect( isPrimitive(new String) ).toBe( false );
@@ -121,7 +121,7 @@ define(
 
         if( typeof Symbol === 'function') {
           it(
-            'determines symbols',
+            'determines `symbol`',
             function () {
               var
                 _symbolObject = Object( Symbol() ),
@@ -134,7 +134,7 @@ define(
         }
 
         it(
-          'determines undefined',
+          'determines `undefined`',
           function () {
             var
               _UNDEF;
@@ -190,7 +190,7 @@ define(
         ),
 
         it(
-          'determines arguments',
+          'determines `arguments`',
           function () {
             expect( typeof arguments !== typeOf(arguments) ).toBe( true ),
             expect( typeOf(arguments) ).toBe('arguments');
@@ -198,7 +198,7 @@ define(
         ),
 
         it(
-          'determines array',
+          'determines `array`',
           function () {
             var
               _arrayLength = Array( 1 ),
@@ -215,7 +215,7 @@ define(
         ),
 
         it(
-          'determines boolean',
+          'determines `boolean`',
           function () {
             var
               _booleanObjectFalse = new Boolean,
@@ -241,7 +241,7 @@ define(
         ),
 
         it(
-          'determines date',
+          'determines `date`',
           function () {
             var
               _dateString = Date(),
@@ -267,7 +267,7 @@ define(
         ),
 
         it(
-          'determines error',
+          'determines `error`',
           function () {
             var
               _genericError = new Error,
@@ -281,7 +281,7 @@ define(
         ),
 
         it(
-          'determines function',
+          'determines `function`',
           function () {
             var
               _functionLiteral = function () {},
@@ -295,7 +295,7 @@ define(
         ),
 
         it(
-          'determines null',
+          'determines `null`',
           function () {
             expect( typeof null !== typeOf(null) ).toBe( true ),
             expect( typeOf(null) ).toBe('null');
@@ -303,7 +303,7 @@ define(
         ),
 
         it(
-          'determines number',
+          'determines `number`',
           function () {
             var
               _noNumber = Number.NaN,
@@ -338,7 +338,7 @@ define(
         ),
 
         it(
-          'determines object',
+          'determines `object`',
           function () {
             var
               _objectCustom = function () {
@@ -391,7 +391,7 @@ define(
         ),
 
         it(
-          'determines regExp',
+          'determines `regExp`',
           function () {
             var
               _regExpLiteral = /^[a-z]{1,2}$/gi,
@@ -405,7 +405,7 @@ define(
         ),
 
         it(
-          'determines string',
+          'determines `string`',
           function () {
             var
               _stringObject = new String,
@@ -423,7 +423,7 @@ define(
 
         if( typeof Symbol === 'function') {
           it(
-            'determines symbol',
+            'determines `symbol`',
             function () {
               var
                 _symbolObject = Object( Symbol() ),
@@ -438,7 +438,7 @@ define(
         }
 
         it(
-          'determines undefined',
+          'determines `undefined`',
           function () {
             var
               _UNDEF;
