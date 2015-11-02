@@ -12,5 +12,4 @@ node_js:
   - "stable"
 notifications:
   email: webmaster@christiangrete.com
-script:
-  - grunt build
+script: bin/test.sh
