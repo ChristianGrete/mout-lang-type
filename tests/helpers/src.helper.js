@@ -1,6 +1,6 @@
 'use strict';
 
-require.config(
+requirejs.config(
   {
     'paths': {
         'mout-lang-type': '../src'
