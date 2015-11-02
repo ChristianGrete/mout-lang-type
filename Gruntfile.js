@@ -84,7 +84,8 @@ module.exports = function ( $grunt ) {
             },
           'exec': {
               'commit': 'git commit -m "release(v<%= pkg.version %>): distribute"',
-              'tag': 'git tag -a v<%= pkg.version %> -m "<%= grunt.option(\'tagMessage\') %>"'
+              'tag': 'git tag -a v<%= pkg.version %> -m "<%= grunt.option(\'tagMessage\') %>"',
+              'test': 'node <%= cfg.PATH__TESTS %>/<%= cfg.FILE__RUNNER_JS %>'
             },
           'jasmine': {
               'src': {
