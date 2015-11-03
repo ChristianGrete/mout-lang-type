@@ -1,7 +1,6 @@
 before_install: npm install -g grunt-cli
 before_script:
   - grunt default
-  - grunt jasmine
   - grunt jsdoc
 install: bin/install.sh
 language: node_js
@@ -13,4 +12,6 @@ node_js:
   - "stable"
 notifications:
   email: webmaster@christiangrete.com
-script: bin/test.sh
+script:
+  - grunt jasmine
+  - bin/test.sh

@@ -11,10 +11,10 @@ const
     );
 
 describe(
-  'Distributed artifact',
+  'Distributable artifact',
   function () {
     it(
-      'is located in the `dist` directory',
+      'is generated into the `dist` directory',
       function () {
         var
           _isDirectory,
