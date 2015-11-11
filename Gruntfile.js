@@ -160,6 +160,23 @@ module.exports = function ( $grunt ) {
                     }
                 }
             },
+          'uglify': {
+              'dist': {
+                  'cwd': '<%= cfg.PATH__DIST %>',
+                  'dest': '<%= cfg.PATH__DIST %>',
+                  'expand': true,
+                  'src': '<%= cfg.GLOB__JS__RECURSIVE %>'
+                },
+              'options': {
+                  'beautify': {
+                      'beautify': true,
+                      'indent_level': 2,
+                      'semicolons': false
+                    },
+                  'compress': false,
+                  'mangle': false
+                }
+            },
           'watch': {
               'docs': {
                   'files': '<%= cfg.PATH__DOCS %>/<%= cfg.GLOB__ANY_FILE__RECURSIVE %>'

@@ -8,18 +8,6 @@
 define(
   function () {
     var
-
-      /**
-       * Returns whether the passed value is of a primitive data type
-       * @author Christian Grete <webmaster@christiangrete.com>
-       * @function module:mout-lang-type.lang.isPrimitive
-       * @license MIT
-       * @param {mixed} $value The <code>object</code> or <code>primitive</code> whose data type is to be checked
-       * @returns {boolean} A <code>boolean</code> indicating whether the passed argument is a primitive value
-       * @see [mout/lang/isPrimitive]{@link https://github.com/mout/mout/commit/1b31347}
-       * @summary Checks whether a value is primitive
-       */
-
       isPrimitive = function isPrimitive ( $value ) {
           return (
               $value === null
@@ -31,6 +19,17 @@ define(
         };
 
     isPrimitive.prototype = null;
+
+    /**
+     * Returns whether the passed value is of a primitive data type
+     * @author Christian Grete <webmaster@christiangrete.com>
+     * @function module:mout-lang-type.lang.isPrimitive
+     * @license MIT
+     * @param {mixed} $value The <code>object</code> or <code>primitive</code> whose data type is to be checked
+     * @returns {boolean} A <code>boolean</code> indicating whether the passed argument is a primitive value
+     * @see [mout/lang/isPrimitive]{@link https://github.com/mout/mout/commit/1b31347}
+     * @summary Checks whether a value is primitive
+     */
 
     return isPrimitive;
   }
