@@ -197,6 +197,7 @@ module.exports = function ( $grunt ) {
               'clean',
               'copy',
               'nodefy',
+              'uglify',
               'string-replace',
               'alias'
             ],
