@@ -33,7 +33,36 @@ define(
       _charAt = _prototype.charAt,
       _slice = _prototype.slice,
       _toLowerCase = _prototype.toLowerCase,
-      _toString = _conversionObject.toString;
+      _toString = _conversionObject.toString,
+
+      /**
+       * Returns the type of the passed value
+       * @author Christian Grete <webmaster@christiangrete.com>
+       * @function module:mout-lang-type.lang.typeOf
+       * @license MIT
+       * @param {mixed} $value The <code>object</code> or <code>primitive</code> whose type is to be returned
+       * @requires module:mout-lang-type.lang.isPrimitive
+       * @returns {string} A <code>string</code> indicating the type of the passed argument
+       * @summary Gets the type of a value
+       */
+
+      typeOf = function typeOf ( $value ) {
+          if( $value == null ) {
+            return $value + '';
+          }
+
+          return (
+              isPrimitive( $value ) ?
+                typeof $value :
+                  (
+                    ( _argumentsIsObject && _isArguments($value) )
+                      || _conversionObject[ _toString.call($value) ]
+                        || 'object'
+                  )
+            );
+        };
+
+    typeOf.prototype = null;
 
     if( typeof Symbol === 'function') {
       _length = _builtInTags.push('Symbol');
@@ -77,31 +106,6 @@ define(
         };
     }
 
-    /**
-     * Returns the type of the passed value
-     * @author Christian Grete <webmaster@christiangrete.com>
-     * @function module:mout-lang-type.lang.typeOf
-     * @license MIT
-     * @param {mixed} $value The <code>object</code> or <code>primitive</code> whose type is to be returned
-     * @requires module:mout-lang-type.lang.isPrimitive
-     * @returns {string} A <code>string</code> indicating the type of the passed argument
-     * @summary Gets the type of a value
-     */
-
-    return function typeOf ( $value ) {
-        if( $value == null ) {
-          return $value + '';
-        }
-
-        return (
-            isPrimitive( $value ) ?
-              typeof $value :
-                (
-                  ( _argumentsIsObject && _isArguments($value) )
-                    || _conversionObject[ _toString.call($value) ]
-                      || 'object'
-                )
-          );
-      };
+    return typeOf;
   }
 );
