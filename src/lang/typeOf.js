@@ -33,22 +33,7 @@ define(
       _charAt = _prototype.charAt,
       _slice = _prototype.slice,
       _toLowerCase = _prototype.toLowerCase,
-      _toString = _conversionObject.toString,
-      typeOf = function typeOf ( $value ) {
-          if( $value == null ) {
-            return $value + '';
-          }
-
-          return (
-              isPrimitive( $value ) ?
-                typeof $value :
-                  (
-                    ( _argumentsIsObject && _isArguments($value) )
-                      || _conversionObject[ _toString.call($value) ]
-                        || 'object'
-                  )
-            );
-        };
+      _toString = _conversionObject.toString;
 
     if( typeof Symbol === 'function') {
       _length = _builtInTags.push('Symbol');
@@ -92,8 +77,6 @@ define(
         };
     }
 
-    typeOf.prototype = null;
-
     /**
      * Returns the type of the passed value
      * @author Christian Grete <webmaster@christiangrete.com>
@@ -104,6 +87,24 @@ define(
      * @returns {string} A <code>string</code> indicating the type of the passed argument
      * @summary Gets the type of a value
      */
+
+    function typeOf ( $value ) {
+      if( $value == null ) {
+        return $value + '';
+      }
+
+      return (
+          isPrimitive( $value ) ?
+            typeof $value :
+              (
+                ( _argumentsIsObject && _isArguments($value) )
+                  || _conversionObject[ _toString.call($value) ]
+                    || 'object'
+              )
+        );
+    }
+
+    typeOf.prototype = null;
 
     return typeOf;
   }

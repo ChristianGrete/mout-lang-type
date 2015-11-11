@@ -10,27 +10,6 @@ define(
     './isPrimitive'
   ],
   function ( isPrimitive ) {
-    var
-      instanceOf = function instanceOf ( $value, $constructor ) {
-          if( $value == null ) {
-            return false;
-          }
-
-          if( isPrimitive($value) ) {
-            $value = Object( $value );
-          }
-
-          return (
-              (
-                /*@cc_on@if(@_jscript_version<5.8)!@end@*/false
-                  && !$value.hasOwnProperty
-              ) ?
-                false :
-                  $value instanceof $constructor
-            );
-        };
-
-    instanceOf.prototype = null;
 
     /**
      * Returns whether the passed value is an instance of the specified constructor
@@ -43,6 +22,27 @@ define(
      * @returns {boolean} A <code>boolean</code> indicating the result of the prototypes comparison
      * @summary Checks whether a value is an instance of a constructor
      */
+
+    function instanceOf ( $value, $constructor ) {
+      if( $value == null ) {
+        return false;
+      }
+
+      if( isPrimitive($value) ) {
+        $value = Object( $value );
+      }
+
+      return (
+          (
+            /*@cc_on@if(@_jscript_version<5.8)!@end@*/false
+              && !$value.hasOwnProperty
+          ) ?
+            false :
+              $value instanceof $constructor
+        );
+    }
+
+    instanceOf.prototype = null;
 
     return instanceOf;
   }

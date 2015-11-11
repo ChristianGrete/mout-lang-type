@@ -10,12 +10,6 @@ define(
     './typeOf'
   ],
   function ( typeOf ) {
-    var
-      isType = function isType ( $value, $type ) {
-          return typeOf( $value ) === $type;
-        };
-
-    isType.prototype = null;
 
     /**
      * Returns whether the passed value is of the specified type
@@ -28,6 +22,12 @@ define(
      * @returns {boolean} A <code>boolean</code> indicating the result of the type comparison
      * @summary Checks whether a value is of a type
      */
+
+    function isType ( $value, $type ) {
+      return typeOf( $value ) === $type;
+    }
+
+    isType.prototype = null;
 
     return isType;
   }

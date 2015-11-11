@@ -7,18 +7,6 @@
 
 define(
   function () {
-    var
-      isPrimitive = function isPrimitive ( $value ) {
-          return (
-              $value === null
-                || (
-                  typeof $value !== 'object'
-                    && typeof $value !== 'function'
-                )
-            );
-        };
-
-    isPrimitive.prototype = null;
 
     /**
      * Returns whether the passed value is of a primitive data type
@@ -30,6 +18,18 @@ define(
      * @see [mout/lang/isPrimitive]{@link https://github.com/mout/mout/commit/1b31347}
      * @summary Checks whether a value is primitive
      */
+
+    function isPrimitive ( $value ) {
+      return (
+          $value === null
+            || (
+              typeof $value !== 'object'
+                && typeof $value !== 'function'
+            )
+        );
+    }
+
+    isPrimitive.prototype = null;
 
     return isPrimitive;
   }
