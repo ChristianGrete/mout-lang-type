@@ -14,7 +14,7 @@ describe(
   'Distributable artifact',
   function () {
     it(
-      'is generated into the `dist` directory',
+      'was generated into the `dist` directory',
       function () {
         var
           _isDirectory,
