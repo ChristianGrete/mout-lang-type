@@ -8,14 +8,23 @@
 [![Downloads via npm per Month](https://img.shields.io/npm/dm/mout-lang-type.svg)](https://www.npmjs.com/package/mout-lang-type)
 [![Bower Component Version](https://img.shields.io/bower/v/mout-lang-type.svg)](http://bower.io/search/?q=mout-lang-type)
 
-> An extension to [mout](http://moutjs.com)/[lang](http://moutjs.com/docs/latest/lang.html) utilities for nerds
+> An extension to the [mout](http://moutjs.com)/[lang](http://moutjs.com/docs/latest/lang.html) utilities for more reliable type testing
 
-__mout-lang-type__ is an extension to [MOUT](http://moutjs.com)’s _[lang](http://moutjs.com/docs/latest/lang.html)_ utilities. It provides two major modules: A `typeOf` and an `isType` function to be used for more reliable type checks where the included `kindOf` and `isKind` functions would fail. The difference is that those functions always use the __string description tags__ of objects (historically known as the `[[Class]]` internal slot tags) expressed in _UpperCamelCase_, whereas these additional functions use only the limited set of __built-in object tags__ expressed in _lowerCamelCase_ and prefer the results of the native `typeof` operator whenever possible:
+__mout-lang-type__ is an extension to [MOUT](http://moutjs.com)’s _[lang](http://moutjs.com/docs/latest/lang.html)_ utilities. It provides two major modules: A `typeOf` and an `isType` function to be used for more reliable type checks where the included `kindOf` and `isKind` functions would fail. The difference is that those functions always use the __string description tags__ of objects (historically known as the `[[Class]]` internal slot tags) expressed in _UpperCamelCase_, whereas these additional functions use only the limited set of __built-in object tags__ expressed in _lowerCamelCase_ and yield precedence to the results of the native `typeof` operator whenever possible:
 ```js
 kindOf( navigator ); // 'Navigator'
 typeOf( navigator ); // 'object'
+
+typeof []; // 'object'
+typeOf( [] ); // 'array'
 ```
 This extension also provides two additional modules: An `instanceOf` function that improves the native `instanceof` operator by supporting comparisons with primitive values and an `isPrimitive` function that tests whether values are of primitive data types or not.
+```js
+1 instanceof Number; // false
+instanceOf( 1, Number ); // true
+
+isPrimitive( null ); // true
+```
 
 ## Getting started
 
