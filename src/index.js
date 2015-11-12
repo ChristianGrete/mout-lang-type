@@ -15,6 +15,7 @@ define(
      * @module mout-lang-type
      * @property {object} lang Contains all <code>lang</code> utilities
      * @property {function} lang.instanceOf Checks whether a value is an instance of a constructor
+     * @property {function} lang.isComplex Checks whether a value is complex
      * @property {function} lang.isPrimitive Checks whether a value is primitive
      * @property {function} lang.isType Checks whether a value is of a type
      * @property {function} lang.typeOf Gets the type of a value
