@@ -20,13 +20,15 @@ define(
      */
 
     function isPrimitive ( $value ) {
-      return (
-          $value === null
-            || (
-              typeof $value !== 'object'
-                && typeof $value !== 'function'
-            )
-        );
+      switch( typeof $value ) {
+        case 'boolean':
+        case 'number':
+        case 'string':
+        case 'symbol':
+          return true;
+      }
+
+      return $value == null;
     }
 
     isPrimitive.prototype = null;
