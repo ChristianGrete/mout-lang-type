@@ -6,10 +6,7 @@
  */
 
 define(
-  [
-    './isPrimitive'
-  ],
-  function ( isPrimitive ) {
+  function () {
     var
       _argumentsIsObject,
       _builtInTag,
@@ -83,7 +80,6 @@ define(
      * @function module:mout-lang-type.lang.typeOf
      * @license MIT
      * @param {mixed} $value The <code>object</code> or <code>primitive</code> whose type is to be returned
-     * @requires module:mout-lang-type.lang.isPrimitive
      * @returns {string} A <code>string</code> indicating the type of the passed argument
      * @summary Gets the type of a value
      */
@@ -94,13 +90,16 @@ define(
       }
 
       return (
-          isPrimitive( $value ) ?
-            typeof $value :
-              (
-                ( _argumentsIsObject && _isArguments($value) )
-                  || _conversionObject[ _toString.call($value) ]
-                    || 'object'
-              )
+          (
+            typeof $value === 'object'
+              || typeof $value === 'function'
+          ) ?
+            (
+              ( _argumentsIsObject && _isArguments($value) )
+                || _conversionObject[ _toString.call($value) ]
+                  || 'object'
+            ) :
+              typeof $value
         );
     }
 

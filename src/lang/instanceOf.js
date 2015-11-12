@@ -6,10 +6,7 @@
  */
 
 define(
-  [
-    './isPrimitive'
-  ],
-  function ( isPrimitive ) {
+  function () {
 
     /**
      * Returns whether the passed value is an instance of the specified constructor
@@ -18,7 +15,6 @@ define(
      * @license MIT
      * @param {mixed} $value The <code>object</code> or <code>primitive</code> whose prototype chain is to be checked
      * @param {function} $constructor The <code>function</code> whose prototype property is to be compared against
-     * @requires module:mout-lang-type.lang.isPrimitive
      * @returns {boolean} A <code>boolean</code> indicating the result of the prototypes comparison
      * @summary Checks whether a value is an instance of a constructor
      */
@@ -28,7 +24,10 @@ define(
         return false;
       }
 
-      if( isPrimitive($value) ) {
+      if(
+        typeof $value !== 'object'
+          && typeof $value !== 'function'
+      ) {
         $value = Object( $value );
       }
 
