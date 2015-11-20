@@ -26,6 +26,6 @@ define(
         'isPrimitive': require('./lang/isPrimitive'),
         'isType': require('./lang/isType'),
         'typeOf': require('./lang/typeOf')
-      };
+      }
   }
-);
+)

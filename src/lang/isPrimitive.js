@@ -27,14 +27,14 @@ define(
         case 'number':
         case 'string':
         case 'symbol':
-          return true;
+          return true
       }
 
-      return $value == null;
+      return $value == null
     }
 
     isPrimitive.prototype = null;
 
-    return isPrimitive;
+    return isPrimitive
   }
-);
+)

@@ -24,11 +24,11 @@ define(
      */
 
     function isType ( $value, $type ) {
-      return typeOf( $value ) === $type;
+      return typeOf( $value ) === $type
     }
 
     isType.prototype = null;
 
-    return isType;
+    return isType
   }
-);
+)

@@ -20,29 +20,26 @@ define(
      */
 
     function instanceOf ( $value, $constructor ) {
-      if( $value == null ) {
+      if( $value == null )
         return false;
-      }
 
       if(
         typeof $value !== 'object'
           && typeof $value !== 'function'
-      ) {
+      )
         $value = Object( $value );
-      }
 
       return (
-          (
-            /*@cc_on@if(@_jscript_version<5.8)!@end@*/false
-              && !$value.hasOwnProperty
-          ) ?
+          /*@cc_on@if(@_jscript_version<5.8)!@end@*/false
+            && !$value.hasOwnProperty
+          ?
             false :
               $value instanceof $constructor
-        );
+        )
     }
 
     instanceOf.prototype = null;
 
-    return instanceOf;
+    return instanceOf
   }
-);
+)
