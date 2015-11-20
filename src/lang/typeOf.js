@@ -7,8 +7,8 @@
 
 // Annotations:
 //   1. `RegExp` objects are functions in Safari/iOS < 6 and Android < 4
-//   2. `arguments` has no built-in tag in IE < 8
-//   3. Functionish host objects have no built-in tags in IE < 9
+//   2. `arguments` has no built-in tag in MSIE < 8
+//   3. Functionish host objects have no built-in tags in MSIE < 9
 
 define(
   function () {
