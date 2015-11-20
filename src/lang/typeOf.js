@@ -5,10 +5,15 @@
  * @license MIT
  */
 
+// Annotations:
+//   1. `RegExp` objects are functions in Safari/iOS < 6 and Android < 4
+//   2. `arguments` has no built-in tag in IE < 8
+//   3. Functionish host objects have no built-in tags in IE < 9
+
 define(
   function () {
     var
-      _argumentsIsObject,
+      _argumentsIsObject = false,
       _builtInTag,
       _builtInTags = [
           'Arguments',
@@ -26,15 +31,17 @@ define(
       _hasOwnProperty,
       _isArguments,
       _length = _builtInTags.length,
+      _objectHasNoCreateMethod = typeof Object.create !== 'function',
+      _pattern,
       _prototype = String.prototype,
       _charAt = _prototype.charAt,
+      _retestIfObject,
       _slice = _prototype.slice,
       _toLowerCase = _prototype.toLowerCase,
       _toString = _conversionObject.toString;
 
-    if( typeof Symbol === 'function') {
+    if( typeof Symbol === 'function')
       _length = _builtInTags.push('Symbol');
-    }
 
     while( _length -- ) {
       _builtInTag = _builtInTags[ _length ],
@@ -53,7 +60,7 @@ define(
             + _slice.call(
                 _builtInTag,
                 1
-              );
+              )
     }
 
     if(
@@ -70,8 +77,23 @@ define(
               ) ?
                 'arguments' :
                   false
-            );
-        };
+            )
+        }
+    }
+
+    if( _objectHasNoCreateMethod ) {
+      _pattern = /^[\s[]?function/,
+
+      _retestIfObject = function ( $value, $type ) {
+          return (
+              $type === 'object' ?
+                _pattern.test( $value + '' ) ?
+                  'function' :
+                    false
+                :
+                  $type
+            )
+        }
     }
 
     /**
@@ -85,26 +107,46 @@ define(
      */
 
     function typeOf ( $value ) {
-      if( $value == null ) {
+      var
+        _type;
+
+      if( $value == null )
         return $value + '';
-      }
 
       return (
-          (
-            typeof $value === 'object'
-              || typeof $value === 'function'
-          ) ?
+          typeof $value === 'object'
+            || typeof $value === 'function' // 1
+          ?
             (
-              ( _argumentsIsObject && _isArguments($value) )
-                || _conversionObject[ _toString.call($value) ]
-                  || 'object'
+              _argumentsIsObject // 2
+                && _isArguments( $value )
+
+              ||
+
+              (
+                _type = _conversionObject[ _toString.call($value) ],
+
+                _objectHasNoCreateMethod // 3
+              )
+                && _retestIfObject(
+                  $value,
+                  _type
+                )
+
+              ||
+
+              _type
+
+              ||
+
+              'object'
             ) :
               typeof $value
-        );
+        )
     }
 
     typeOf.prototype = null;
 
-    return typeOf;
+    return typeOf
   }
-);
+)
