@@ -5,8 +5,13 @@
  * @license MIT
  */
 
+// Annotations:
+//   1. `instanceof` on host objects causes memory leaks in MSIE < 9
+
 define(
   function () {
+    var
+      _objectHasNoCreateMethod = typeof Object.create !== 'function';
 
     /**
      * Returns whether the passed value is an instance of the specified constructor
@@ -30,8 +35,8 @@ define(
         $value = Object( $value );
 
       return (
-          /*@cc_on@if(@_jscript_version<5.8)!@end@*/false
-            && !$value.hasOwnProperty
+          _objectHasNoCreateMethod
+            && !$value.valueOf // 1
           ?
             false :
               $value instanceof $constructor
