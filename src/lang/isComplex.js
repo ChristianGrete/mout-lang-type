@@ -23,7 +23,7 @@ define(
      */
 
     function isComplex ( $value ) {
-      return isPrimitive( $value ) === false
+      return !isPrimitive( $value )
     }
 
     isComplex.prototype = null;
