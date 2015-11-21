@@ -86,11 +86,10 @@ define(
 
       _retestIfObject = function ( $value, $type ) {
           return (
-              $type === 'object' ?
-                _pattern.test( $value + '' ) ?
-                  'function' :
-                    false
-                :
+              $type === 'object'
+                && _pattern.test( $value + '' )
+              ?
+                'function' :
                   $type
             )
         }
