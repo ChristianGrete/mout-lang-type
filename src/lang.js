@@ -18,6 +18,7 @@ define(
      * @property {function} isFunction Checks whether a value is a function
      * @property {function} isObject Checks whether a value is an object
      * @property {function} isPrimitive Checks whether a value is primitive
+     * @property {function} isRegExp Checks whether a value is a regular expression
      * @property {function} isType Checks whether a value is of a type
      * @property {function} typeOf Gets the type of a value
      */
@@ -28,6 +29,7 @@ define(
         'isFunction': require('./lang/isFunction'),
         'isObject': require('./lang/isObject'),
         'isPrimitive': require('./lang/isPrimitive'),
+        'isRegExp': require('./lang/isRegExp'),
         'isType': require('./lang/isType'),
         'typeOf': require('./lang/typeOf')
       }

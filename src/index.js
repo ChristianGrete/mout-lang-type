@@ -19,6 +19,7 @@ define(
      * @property {function} lang.isFunction Checks whether a value is a function
      * @property {function} lang.isObject Checks whether a value is an object
      * @property {function} lang.isPrimitive Checks whether a value is primitive
+     * @property {function} lang.isRegExp Checks whether a value is a regular expression
      * @property {function} lang.isType Checks whether a value is of a type
      * @property {function} lang.typeOf Gets the type of a value
      * @property {string} VERSION Indicates the version number of the module
