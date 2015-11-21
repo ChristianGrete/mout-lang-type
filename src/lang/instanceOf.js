@@ -21,6 +21,7 @@ define(
      * @param {mixed} $value The <code>object</code> or <code>primitive</code> whose prototype chain is to be checked
      * @param {function} $constructor The <code>function</code> whose prototype property is to be compared against
      * @returns {boolean} A <code>boolean</code> indicating the result of the prototypes comparison
+     * @see [MooTools Core]{@link https://github.com/mootools/mootools-core/commit/4613cae}
      * @summary Checks whether a value is an instance of a constructor
      */
 
