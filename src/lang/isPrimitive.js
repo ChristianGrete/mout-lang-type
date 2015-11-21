@@ -17,7 +17,7 @@ define(
      * @license MIT
      * @param {mixed} $value The <code>object</code> or <code>primitive</code> whose data type is to be checked
      * @returns {boolean} A <code>boolean</code> indicating whether the passed argument has a primitive value
-     * @see [mout/lang/isPrimitive]{@link https://github.com/mout/mout/commit/1b31347}
+     * @see [<code>mout/lang/isPrimitive</code>]{@link https://github.com/mout/mout/commit/1b31347}
      * @summary Checks whether a value is primitive
      */
 
