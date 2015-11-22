@@ -10,7 +10,7 @@
 
 > An extension to the [mout](http://moutjs.com)/[lang](http://moutjs.com/docs/latest/lang.html) utilities for more reliable type testing
 
-__mout-lang-type__ is an extension to [MOUT](http://moutjs.com)’s _[lang](http://moutjs.com/docs/latest/lang.html)_ utilities. It provides two major modules: A `typeOf` and an `isType` function to be used for more reliable type checks where the included `kindOf` and `isKind` functions would fail. The difference is that those functions always use the __string description tags__ of objects (historically known as the `[[Class]]` internal slot tags) expressed in _UpperCamelCase_, whereas these additional functions use only the limited set of __built-in object tags__ expressed in _lowerCamelCase_ and yield precedence to the results of the native `typeof` operator whenever possible:
+__mout-lang-type__ is an extension to [MOUT](http://moutjs.com)’s _[lang](http://moutjs.com/docs/latest/lang.html)_ utilities. It provides two major modules: A `typeOf` and an `isType` function to be used for more reliable type checks where the included `kindOf` and `isKind` functions would fail. The difference is that those included functions always use the __string description tags__ of objects (historically known as the `[[Class]]` internal slot tags) expressed in _UpperCamelCase_ for testing, whereas these additional functions use only the limited set of __built-in object tags__ expressed in _lowerCamelCase_ and yield precedence to the results of the native `typeof` operator whenever possible:
 ```js
 kindOf( navigator ); // 'Navigator'
 typeOf( navigator ); // 'object'
