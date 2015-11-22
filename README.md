@@ -18,12 +18,23 @@ typeOf( navigator ); // 'object'
 typeof []; // 'object'
 typeOf( [] ); // 'array'
 ```
-This extension also provides two additional modules: An `instanceOf` function that improves the native `instanceof` operator by supporting comparisons with primitive values and an `isPrimitive` function that tests whether values are of primitive data types or not.
+This extension also provides two additional modules: An `instanceOf` function that improves the native `instanceof` operator by supporting comparisons with primitive values and fixing a memory leak in legacy Internet Explorer versions; and an `isComplex` function that tests whether values are of complex (non-primitive) data types or not:
 ```js
 1 instanceof Number; // false
 instanceOf( 1, Number ); // true
 
-isPrimitive( null ); // true
+// No memory leaks in IE < 9 on COM objects:
+instanceOf( window, Object ); // false
+
+isComplex( 1 ); // false
+isComplex( new Number ); // true
+```
+Lastly, this extension provides a bunch of replacement modules: An `isPrimitive` function that adds support for ES2015 symbols and finally the `isFunction`, `isObject` and `isRegExp` functions that internally use `isType` instead of `isKind` for their specific type checks:
+```js
+isFunction( alert ); // true, even in IE7
+isObject( window ); // true, same here
+isPrimitive( Symbol() ); // true
+isRegExp( /^regExp$/i ); // true
 ```
 
 ## Getting started
@@ -47,8 +58,6 @@ var
 
 // Use the overall module:
 moutLangType.lang.instanceOf( [], Array ); // true
-moutLangType.lang.isPrimitive( new Boolean ); // false
-moutLangType.lang.isType( null, 'object'); // false
 moutLangType.lang.typeOf( null ) === 'null'; // true
 
 
@@ -57,24 +66,18 @@ var
   lang = require('mout-lang-type/lang');
 
 // Use the lang utilities:
-lang.instanceOf( 1, Number ); // true
 lang.isPrimitive( false ); // true
 lang.isType( new String('foo'), 'string'); // true
-lang.typeOf( new Date ) === 'date'; // true
 
 
 // Load the individual utilities:
 var
-  instanceOf = require('mout-lang-type/lang/instanceOf'),
-  isPrimitive = require('mout-lang-type/lang/isPrimitive'),
-  isType = require('mout-lang-type/lang/isType'),
-  typeOf = require('mout-lang-type/lang/typeOf');
+  isComplex = require('mout-lang-type/lang/isComplex'),
+  isFunction = require('mout-lang-type/lang/isFunction');
 
 // Use the individual utilities:
-instanceOf( Symbol(), Symbol ); // true
-isPrimitive('foo'); // true
-isType( new RegExp, 'regExp'); // true
-typeOf( [1, 2, 3] ) === 'array'; // true
+isComplex( new String('bar') ); // true
+isFunction( Array ); // true
 ```
 Keep in mind that the module’s name `mout-lang-type` in AMD is actually just the module’s root directory and can differ from the example above depending on your deployed scripts directory structure.
 
