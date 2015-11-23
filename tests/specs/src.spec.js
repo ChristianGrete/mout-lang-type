@@ -592,7 +592,7 @@ define(
             expect( typeOf(new Number) ).toBe('number'),
             expect( typeOf({}) ).toBe('object'),
             expect( typeOf(new Object) ).toBe('object'),
-            expect( typeOf(_customObject) ).toBe('object'),
+            expect( typeOf(_customObject) ).toBe('object'), // TODO
             expect( typeOf(_objectWithNullAsPrototype) ).toBe('object'),
             expect( typeOf(/./) ).toBe('regExp'),
             expect( typeOf(new RegExp) ).toBe('regExp'),
