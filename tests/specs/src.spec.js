@@ -115,13 +115,12 @@ define(
             expect( instanceOf(true, Boolean) ).toBe( true ),
             expect( instanceOf(null, Object) ).toBe( false ),
             expect( instanceOf(0, Number) ).toBe( true ),
-            expect( instanceOf('', String) ).toBe( true );
+            expect( instanceOf('', String) ).toBe( true ),
+            expect( instanceOf(_UNDEFINED, Object) ).toBe( false );
 
             if( _SYMBOL_IS_FUNCTION ) {
               expect( instanceOf(_primitiveSymbol, Symbol) ).toBe( true );
             }
-
-            expect( instanceOf(_UNDEFINED, Object) ).toBe( false );
           }
         ),
 
@@ -216,7 +215,8 @@ define(
             expect( isComplex(/./) ).toBe( true ),
             expect( isComplex(new RegExp) ).toBe( true ),
             expect( isComplex('') ).toBe( false ),
-            expect( isComplex(new String) ).toBe( true );
+            expect( isComplex(new String) ).toBe( true ),
+            expect( isComplex(_UNDEFINED) ).toBe( false );
 
             if( _SYMBOL_IS_FUNCTION ) {
               expect( isComplex(_primitiveSymbol) ).toBe( false ),
@@ -274,7 +274,8 @@ define(
             expect( isFunction(/./) ).toBe( false ),
             expect( isFunction(new RegExp) ).toBe( false ),
             expect( isFunction('') ).toBe( false ),
-            expect( isFunction(new String) ).toBe( false );
+            expect( isFunction(new String) ).toBe( false ),
+            expect( isFunction(_UNDEFINED) ).toBe( false );
 
             if( _SYMBOL_IS_FUNCTION ) {
               expect( isFunction(_primitiveSymbol) ).toBe( false ),
@@ -332,7 +333,8 @@ define(
             expect( isObject(/./) ).toBe( false ),
             expect( isObject(new RegExp) ).toBe( false ),
             expect( isObject('') ).toBe( false ),
-            expect( isObject(new String) ).toBe( false );
+            expect( isObject(new String) ).toBe( false ),
+            expect( isObject(_UNDEFINED) ).toBe( false );
 
             if( _SYMBOL_IS_FUNCTION ) {
               expect( isObject(_primitiveSymbol) ).toBe( false ),
@@ -386,7 +388,8 @@ define(
             expect( isPrimitive(/./) ).toBe( false ),
             expect( isPrimitive(new RegExp) ).toBe( false ),
             expect( isPrimitive('') ).toBe( true ),
-            expect( isPrimitive(new String) ).toBe( false );
+            expect( isPrimitive(new String) ).toBe( false ),
+            expect( isPrimitive(_UNDEFINED) ).toBe( true );
 
             if( _SYMBOL_IS_FUNCTION ) {
               expect( isPrimitive(_primitiveSymbol) ).toBe( true ),
@@ -440,7 +443,8 @@ define(
             expect( isRegExp(/./) ).toBe( true ),
             expect( isRegExp(new RegExp) ).toBe( true ),
             expect( isRegExp('') ).toBe( false ),
-            expect( isRegExp(new String) ).toBe( false );
+            expect( isRegExp(new String) ).toBe( false ),
+            expect( isRegExp(_UNDEFINED) ).toBe( false );
 
             if( _SYMBOL_IS_FUNCTION ) {
               expect( isRegExp(_primitiveSymbol) ).toBe( false ),
@@ -498,7 +502,8 @@ define(
             expect( isType(/./, 'regExp') ).toBe( true ),
             expect( isType(new RegExp, 'regExp') ).toBe( true ),
             expect( isType('', 'string') ).toBe( true ),
-            expect( isType(new String, 'string') ).toBe( true );
+            expect( isType(new String, 'string') ).toBe( true ),
+            expect( isType(_UNDEFINED, 'undefined') ).toBe( true );
 
             if( _NAVIGATOR_IS_OBJECT ) {
               expect( isType(navigator, 'navigator') ).toBe( false );
@@ -531,156 +536,51 @@ define(
         ),
 
         it(
-          'determines built-in types' // TODO
-        ),
-
-        it(
-          'determines `arguments`',
+          'determines built-in types',
           function () {
-            expect( typeof arguments !== typeOf(arguments) ).toBe( true ),
-            expect( typeOf(arguments) ).toBe('arguments');
+            if( _ALERT_IS_DEFINED ) {
+              expect( typeOf(alert) ).toBe('function');
+            }
+
+            expect( typeOf(arguments) ).toBe('arguments'),
+            expect( typeOf([]) ).toBe('array'),
+            expect( typeOf(new Array) ).toBe('array'),
+            expect( typeOf(false) ).toBe('boolean'),
+            expect( typeOf(true) ).toBe('boolean'),
+            expect( typeOf(new Boolean) ).toBe('boolean'),
+            expect( typeOf(new Date) ).toBe('date'),
+            expect( typeOf(new Error) ).toBe('error'),
+            expect( typeOf(new TypeError) ).toBe('error'), // TODO
+            expect( typeOf(function () {}) ).toBe('function'),
+            expect( typeOf(new Function) ).toBe('function'),
+            expect( typeOf(Number.NEGATIVE_INFINITY) ).toBe('number'),
+            expect( typeOf(-0) ).toBe('number'),
+            expect( typeOf(0) ).toBe('number'),
+            expect( typeOf(+0) ).toBe('number'),
+            expect( typeOf(Number.POSITIVE_INFINITY) ).toBe('number'),
+            expect( typeOf(Number.NaN) ).toBe('number'),
+            expect( typeOf(new Number) ).toBe('number'),
+            expect( typeOf({}) ).toBe('object'),
+            expect( typeOf(new Object) ).toBe('object'),
+            expect( typeOf(_objectWithNullAsPrototype) ).toBe('object'),
+            expect( typeOf(/./) ).toBe('regExp'),
+            expect( typeOf(new RegExp) ).toBe('regExp'),
+            expect( typeOf('') ).toBe('string'),
+            expect( typeOf(new String) ).toBe('string'),
+            expect( typeOf(_UNDEFINED) ).toBe('undefined');
+
+            if( _NAVIGATOR_IS_OBJECT ) {
+              expect( typeOf(navigator) ).toBe('object');
+            }
+
+            if( _SYMBOL_IS_FUNCTION ) {
+              expect( typeOf(_primitiveSymbol) ).toBe('symbol'),
+              expect( typeOf(_complexSymbol) ).toBe('symbol');
+            }
           }
         ),
 
-        it(
-          'determines `array`',
-          function () {
-            var
-              _arrayLength = Array( 1 ),
-              _arrayLiteral = [],
-              _arrayObject = new Array( 0, 1, 2 );
-
-            expect( typeof _arrayLength !== typeOf(_arrayLength) ).toBe( true ),
-            expect( typeOf(_arrayLength) ).toBe('array'),
-            expect( typeof _arrayLiteral !== typeOf(_arrayLiteral) ).toBe( true ),
-            expect( typeOf(_arrayLiteral) ).toBe('array'),
-            expect( typeof _arrayObject !== typeOf(_arrayObject) ).toBe( true ),
-            expect( typeOf(_arrayObject) ).toBe('array');
-          }
-        ),
-
-        it(
-          'determines `boolean`',
-          function () {
-            var
-              _booleanObjectFalse = new Boolean,
-              _booleanObjectTrue = new Boolean( true ),
-              _booleanPrimitiveFalse = Boolean(),
-              _booleanPrimitiveTrue = true,
-              _booleanConversionPrimitiveFalse = Object( _booleanPrimitiveFalse ),
-              _booleanConversionPrimitiveTrue = Object( _booleanPrimitiveTrue );
-
-            expect( typeof _booleanObjectFalse !== typeOf(_booleanObjectFalse) ).toBe( true ),
-            expect( typeOf(_booleanObjectFalse) ).toBe('boolean'),
-            expect( typeof _booleanObjectTrue !== typeOf(_booleanObjectTrue) ).toBe( true ),
-            expect( typeOf(_booleanObjectTrue) ).toBe('boolean'),
-            expect( typeof _booleanPrimitiveFalse === typeOf(_booleanPrimitiveFalse) ).toBe( true ),
-            expect( typeOf(_booleanPrimitiveFalse) ).toBe('boolean'),
-            expect( typeof _booleanPrimitiveTrue === typeOf(_booleanPrimitiveTrue) ).toBe( true ),
-            expect( typeOf(_booleanPrimitiveTrue) ).toBe('boolean'),
-            expect( typeof _booleanConversionPrimitiveFalse !== typeOf(_booleanConversionPrimitiveFalse) ).toBe( true ),
-            expect( typeOf(_booleanConversionPrimitiveFalse) ).toBe('boolean'),
-            expect( typeof _booleanConversionPrimitiveTrue !== typeOf(_booleanConversionPrimitiveTrue) ).toBe( true ),
-            expect( typeOf(_booleanConversionPrimitiveTrue) ).toBe('boolean');
-          }
-        ),
-
-        it(
-          'determines `date`',
-          function () {
-            var
-              _dateString = Date(),
-              _dateObject = new Date,
-              _dateValue = _dateObject.valueOf(),
-              _dateConversionString = Object( _dateString ),
-              _dateConversionObject = Object(_dateObject ),
-              _dateConversionValue = Object( _dateValue );
-
-            expect( typeof _dateString === typeOf(_dateString) ).toBe( true ),
-            expect( typeOf(_dateString) ).toBe('string'),
-            expect( typeof _dateObject !== typeOf(_dateObject) ).toBe( true ),
-            expect( typeOf(_dateObject) ).toBe('date'),
-            expect( typeof _dateValue === typeOf(_dateValue) ).toBe( true ),
-            expect( typeOf(_dateValue) ).toBe('number'),
-            expect( typeof _dateConversionString !== typeOf(_dateConversionString) ).toBe( true ),
-            expect( typeOf(_dateConversionString) ).toBe('string'),
-            expect( typeof _dateConversionObject !== typeOf(_dateConversionObject) ).toBe( true ),
-            expect( typeOf(_dateConversionObject) ).toBe('date'),
-            expect( typeof _dateConversionValue !== typeOf(_dateConversionValue) ).toBe( true ),
-            expect( typeOf(_dateConversionValue) ).toBe('number');
-          }
-        ),
-
-        it(
-          'determines `error`',
-          function () {
-            var
-              _genericError = new Error,
-              _specificError = new TypeError;
-
-            expect( typeof _genericError !== typeOf(_genericError) ).toBe( true ),
-            expect( typeOf(_genericError) ).toBe('error'),
-            expect( typeof _specificError !== typeOf(_specificError) ).toBe( true ),
-            expect( typeOf(_specificError) ).toBe('error');
-          }
-        ),
-
-        it(
-          'determines `function`',
-          function () {
-            var
-              _functionLiteral = function () {},
-              _functionObject = new Function;
-
-            expect( typeof _functionLiteral === typeOf(_functionLiteral) ).toBe( true ),
-            expect( typeOf(_functionLiteral) ).toBe('function'),
-            expect( typeof _functionObject === typeOf(_functionObject) ).toBe( true ),
-            expect( typeOf(_functionObject) ).toBe('function');
-          }
-        ),
-
-        it(
-          'determines `null`',
-          function () {
-            expect( typeof null !== typeOf(null) ).toBe( true ),
-            expect( typeOf(null) ).toBe('null');
-          }
-        ),
-
-        it(
-          'determines `number`',
-          function () {
-            var
-              _noNumber = Number.NaN,
-              _numberNegativeInfinity = Number.NEGATIVE_INFINITY,
-              _numberObject = new Number('1'),
-              _numberPositiveInfinity = Number.POSITIVE_INFINITY,
-              _numberPrimitive = 1,
-              _numberConversionNoNumber = Object( _noNumber ),
-              _numberConversionNegativeInfinity = Object( _numberNegativeInfinity ),
-              _numberConversionPositiveInfinity = Object( _numberPositiveInfinity ),
-              _numberConversionPrimitive = Object( _numberPrimitive );
-
-            expect( typeof _noNumber === typeOf(_noNumber) ).toBe( true ),
-            expect( typeOf(_noNumber) ).toBe('number'),
-            expect( typeof _numberNegativeInfinity === typeOf(_numberNegativeInfinity) ).toBe( true ),
-            expect( typeOf(_numberNegativeInfinity) ).toBe('number'),
-            expect( typeof _numberObject !== typeOf(_numberObject) ).toBe( true ),
-            expect( typeOf(_numberObject) ).toBe('number'),
-            expect( typeof _numberPositiveInfinity === typeOf(_numberPositiveInfinity) ).toBe( true ),
-            expect( typeOf(_numberPositiveInfinity) ).toBe('number'),
-            expect( typeof _numberPrimitive === typeOf(_numberPrimitive) ).toBe( true ),
-            expect( typeOf(_numberPrimitive) ).toBe('number'),
-            expect( typeof _numberConversionNoNumber !== typeOf(_numberConversionNoNumber) ).toBe( true ),
-            expect( typeOf(_numberConversionNoNumber) ).toBe('number'),
-            expect( typeof _numberConversionNegativeInfinity !== typeOf(_numberConversionNegativeInfinity) ).toBe( true ),
-            expect( typeOf(_numberConversionNegativeInfinity) ).toBe('number'),
-            expect( typeof _numberConversionPositiveInfinity !== typeOf(_numberConversionPositiveInfinity) ).toBe( true ),
-            expect( typeOf(_numberConversionPositiveInfinity) ).toBe('number'),
-            expect( typeof _numberConversionPrimitive !== typeOf(_numberConversionPrimitive) ).toBe( true ),
-            expect( typeOf(_numberConversionPrimitive) ).toBe('number');
-          }
-        ),
+        // TODO: Custom obj?
 
         it(
           'determines `object`',
@@ -713,85 +613,9 @@ define(
                   }
 
                   return new Custom;
-                }(),
-              _objectExotic,
-              _objectLiteral = {},
-              _objectInstance = new Object;
+                }();
 
-            expect( typeof _objectCustom === typeOf(_objectCustom) ).toBe( true ),
             expect( typeOf(_objectCustom) ).toBe('object');
-
-            if( typeof navigator === 'object') {
-              _objectExotic = navigator,
-
-              expect( typeof _objectExotic === typeOf(_objectExotic) ).toBe( true ),
-              expect( typeOf(_objectExotic) ).toBe('object');
-            }
-
-            expect( typeof _objectLiteral === typeOf(_objectLiteral) ).toBe( true ),
-            expect( typeOf(_objectLiteral) ).toBe('object'),
-            expect( typeof _objectInstance === typeOf(_objectInstance) ).toBe( true ),
-            expect( typeOf(_objectInstance) ).toBe('object');
-          }
-        ),
-
-        it(
-          'determines `regExp`',
-          function () {
-            var
-              _regExpLiteral = /^[a-z]{1,2}$/gi,
-              _regExpObject = RegExp('^[-_]?' + '[a-z]*$');
-
-            expect( typeof _regExpLiteral !== typeOf(_regExpLiteral) ).toBe( true ),
-            expect( typeOf(_regExpLiteral) ).toBe('regExp'),
-            expect( typeof _regExpObject !== typeOf(_regExpObject) ).toBe( true ),
-            expect( typeOf(_regExpObject) ).toBe('regExp');
-          }
-        ),
-
-        it(
-          'determines `string`',
-          function () {
-            var
-              _stringObject = new String,
-              _stringPrimitive = '',
-              _stringConversionPrimitive = Object( _stringPrimitive );
-
-            expect( typeof _stringObject !== typeOf(_stringObject) ).toBe( true ),
-            expect( typeOf(_stringObject) ).toBe('string'),
-            expect( typeof _stringPrimitive === typeOf(_stringPrimitive) ).toBe( true ),
-            expect( typeOf(_stringPrimitive) ).toBe('string'),
-            expect( typeof _stringConversionPrimitive !== typeOf(_stringConversionPrimitive) ).toBe( true ),
-            expect( typeOf(_stringConversionPrimitive) ).toBe('string');
-          }
-        );
-
-        if( typeof Symbol === 'function') {
-          it(
-            'determines `symbol`',
-            function () {
-              var
-                _symbolObject = Object( Symbol() ),
-                _symbolPrimitive = Symbol();
-
-              expect( typeof _symbolObject !== typeOf(_symbolObject) ).toBe( true ),
-              expect( typeOf(_symbolObject) ).toBe('symbol'),
-              expect( typeof _symbolPrimitive === typeOf(_symbolPrimitive) ).toBe( true ),
-              expect( typeOf(_symbolPrimitive) ).toBe('symbol');
-            }
-          );
-        }
-
-        it(
-          'determines `undefined`',
-          function () {
-            var
-              _UNDEF;
-
-            expect( typeof _UNDEF === typeOf(_UNDEF) ).toBe( true ),
-            expect( typeOf(_UNDEF) ).toBe('undefined'),
-            expect( typeof _undef === typeOf() ).toBe( true ),
-            expect( typeOf() ).toBe('undefined');
           }
         );
       }
