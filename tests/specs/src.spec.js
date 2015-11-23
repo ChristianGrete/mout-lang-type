@@ -39,6 +39,34 @@ define(
       _SYMBOL_IS_FUNCTION = typeof Symbol === 'function',
       _UNDEFINED,
       _complexSymbol,
+      _customObject = function () {
+          var
+            Custom = function Custom () {},
+            toString = function toString () {
+                return '[object Custom]';
+              };
+
+          if( typeof Object.create === 'function') {
+            Custom.prototype = Object.create(
+                null,
+                {
+                  'constructor': {
+                      'value': Custom
+                    },
+                  'toString': {
+                      'value': toString
+                    }
+                }
+              );
+          } else {
+            Custom.prototype = {
+                'constructor': Custom,
+                'toString': toString
+              };
+          }
+
+          return new Custom;
+        }(),
       _isFunction = function ( $value ) {
           return (
               typeof $value === 'function'
@@ -211,6 +239,7 @@ define(
             expect( isComplex(new Number) ).toBe( true ),
             expect( isComplex({}) ).toBe( true ),
             expect( isComplex(new Object) ).toBe( true ),
+            expect( isComplex(_customObject) ).toBe( true ),
             expect( isComplex(_objectWithNullAsPrototype) ).toBe( true ),
             expect( isComplex(/./) ).toBe( true ),
             expect( isComplex(new RegExp) ).toBe( true ),
@@ -270,6 +299,7 @@ define(
             expect( isFunction(new Number) ).toBe( false ),
             expect( isFunction({}) ).toBe( false ),
             expect( isFunction(new Object) ).toBe( false ),
+            expect( isFunction(_customObject) ).toBe( false ),
             expect( isFunction(_objectWithNullAsPrototype) ).toBe( false ),
             expect( isFunction(/./) ).toBe( false ),
             expect( isFunction(new RegExp) ).toBe( false ),
@@ -329,6 +359,7 @@ define(
             expect( isObject(new Number) ).toBe( false ),
             expect( isObject({}) ).toBe( true ),
             expect( isObject(new Object) ).toBe( true ),
+            expect( isObject(_customObject) ).toBe( true ),
             expect( isObject(_objectWithNullAsPrototype) ).toBe( true ),
             expect( isObject(/./) ).toBe( false ),
             expect( isObject(new RegExp) ).toBe( false ),
@@ -384,6 +415,7 @@ define(
             expect( isPrimitive(new Number) ).toBe( false ),
             expect( isPrimitive({}) ).toBe( false ),
             expect( isPrimitive(new Object) ).toBe( false ),
+            expect( isPrimitive(_customObject) ).toBe( false ),
             expect( isPrimitive(_objectWithNullAsPrototype) ).toBe( false ),
             expect( isPrimitive(/./) ).toBe( false ),
             expect( isPrimitive(new RegExp) ).toBe( false ),
@@ -439,6 +471,7 @@ define(
             expect( isRegExp(new Number) ).toBe( false ),
             expect( isRegExp({}) ).toBe( false ),
             expect( isRegExp(new Object) ).toBe( false ),
+            expect( isRegExp(_customObject) ).toBe( false ),
             expect( isRegExp(_objectWithNullAsPrototype) ).toBe( false ),
             expect( isRegExp(/./) ).toBe( true ),
             expect( isRegExp(new RegExp) ).toBe( true ),
@@ -498,6 +531,7 @@ define(
             expect( isType(new Number, 'number') ).toBe( true ),
             expect( isType({}, 'object') ).toBe( true ),
             expect( isType(new Object, 'object') ).toBe( true ),
+            expect( isType(_customObject, 'object') ).toBe( true ),
             expect( isType(_objectWithNullAsPrototype, 'object') ).toBe( true ),
             expect( isType(/./, 'regExp') ).toBe( true ),
             expect( isType(new RegExp, 'regExp') ).toBe( true ),
@@ -538,36 +572,6 @@ define(
         it(
           'determines built-in types',
           function () {
-            var
-              _customObject = function () {
-                  var
-                    Custom = function Custom () {},
-                    toString = function toString () {
-                        return '[object Custom]';
-                      };
-
-                  if( typeof Object.create === 'function') {
-                    Custom.prototype = Object.create(
-                        null,
-                        {
-                          'constructor': {
-                              'value': Custom
-                            },
-                          'toString': {
-                              'value': toString
-                            }
-                        }
-                      );
-                  } else {
-                    Custom.prototype = {
-                        'constructor': Custom,
-                        'toString': toString
-                      };
-                  }
-
-                  return new Custom;
-                }();
-
             if( _ALERT_IS_DEFINED ) {
               expect( typeOf(alert) ).toBe('function');
             }
@@ -592,7 +596,7 @@ define(
             expect( typeOf(new Number) ).toBe('number'),
             expect( typeOf({}) ).toBe('object'),
             expect( typeOf(new Object) ).toBe('object'),
-            expect( typeOf(_customObject) ).toBe('object'), // TODO
+            expect( typeOf(_customObject) ).toBe('object'),
             expect( typeOf(_objectWithNullAsPrototype) ).toBe('object'),
             expect( typeOf(/./) ).toBe('regExp'),
             expect( typeOf(new RegExp) ).toBe('regExp'),
