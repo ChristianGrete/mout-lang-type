@@ -538,55 +538,8 @@ define(
         it(
           'determines built-in types',
           function () {
-            if( _ALERT_IS_DEFINED ) {
-              expect( typeOf(alert) ).toBe('function');
-            }
-
-            expect( typeOf(arguments) ).toBe('arguments'),
-            expect( typeOf([]) ).toBe('array'),
-            expect( typeOf(new Array) ).toBe('array'),
-            expect( typeOf(false) ).toBe('boolean'),
-            expect( typeOf(true) ).toBe('boolean'),
-            expect( typeOf(new Boolean) ).toBe('boolean'),
-            expect( typeOf(new Date) ).toBe('date'),
-            expect( typeOf(new Error) ).toBe('error'),
-            expect( typeOf(new TypeError) ).toBe('error'), // TODO
-            expect( typeOf(function () {}) ).toBe('function'),
-            expect( typeOf(new Function) ).toBe('function'),
-            expect( typeOf(Number.NEGATIVE_INFINITY) ).toBe('number'),
-            expect( typeOf(-0) ).toBe('number'),
-            expect( typeOf(0) ).toBe('number'),
-            expect( typeOf(+0) ).toBe('number'),
-            expect( typeOf(Number.POSITIVE_INFINITY) ).toBe('number'),
-            expect( typeOf(Number.NaN) ).toBe('number'),
-            expect( typeOf(new Number) ).toBe('number'),
-            expect( typeOf({}) ).toBe('object'),
-            expect( typeOf(new Object) ).toBe('object'),
-            expect( typeOf(_objectWithNullAsPrototype) ).toBe('object'),
-            expect( typeOf(/./) ).toBe('regExp'),
-            expect( typeOf(new RegExp) ).toBe('regExp'),
-            expect( typeOf('') ).toBe('string'),
-            expect( typeOf(new String) ).toBe('string'),
-            expect( typeOf(_UNDEFINED) ).toBe('undefined');
-
-            if( _NAVIGATOR_IS_OBJECT ) {
-              expect( typeOf(navigator) ).toBe('object');
-            }
-
-            if( _SYMBOL_IS_FUNCTION ) {
-              expect( typeOf(_primitiveSymbol) ).toBe('symbol'),
-              expect( typeOf(_complexSymbol) ).toBe('symbol');
-            }
-          }
-        ),
-
-        // TODO: Custom obj?
-
-        it(
-          'determines `object`',
-          function () {
             var
-              _objectCustom = function () {
+              _customObject = function () {
                   var
                     Custom = function Custom () {},
                     toString = function toString () {
@@ -615,7 +568,46 @@ define(
                   return new Custom;
                 }();
 
-            expect( typeOf(_objectCustom) ).toBe('object');
+            if( _ALERT_IS_DEFINED ) {
+              expect( typeOf(alert) ).toBe('function');
+            }
+
+            expect( typeOf(arguments) ).toBe('arguments'),
+            expect( typeOf([]) ).toBe('array'),
+            expect( typeOf(new Array) ).toBe('array'),
+            expect( typeOf(false) ).toBe('boolean'),
+            expect( typeOf(true) ).toBe('boolean'),
+            expect( typeOf(new Boolean) ).toBe('boolean'),
+            expect( typeOf(new Date) ).toBe('date'),
+            expect( typeOf(new Error) ).toBe('error'),
+            expect( typeOf(new TypeError) ).toBe('error'), // TODO
+            expect( typeOf(function () {}) ).toBe('function'),
+            expect( typeOf(new Function) ).toBe('function'),
+            expect( typeOf(Number.NEGATIVE_INFINITY) ).toBe('number'),
+            expect( typeOf(-0) ).toBe('number'),
+            expect( typeOf(0) ).toBe('number'),
+            expect( typeOf(+0) ).toBe('number'),
+            expect( typeOf(Number.POSITIVE_INFINITY) ).toBe('number'),
+            expect( typeOf(Number.NaN) ).toBe('number'),
+            expect( typeOf(new Number) ).toBe('number'),
+            expect( typeOf({}) ).toBe('object'),
+            expect( typeOf(new Object) ).toBe('object'),
+            expect( typeOf(_customObject) ).toBe('object'),
+            expect( typeOf(_objectWithNullAsPrototype) ).toBe('object'),
+            expect( typeOf(/./) ).toBe('regExp'),
+            expect( typeOf(new RegExp) ).toBe('regExp'),
+            expect( typeOf('') ).toBe('string'),
+            expect( typeOf(new String) ).toBe('string'),
+            expect( typeOf(_UNDEFINED) ).toBe('undefined');
+
+            if( _NAVIGATOR_IS_OBJECT ) {
+              expect( typeOf(navigator) ).toBe('object');
+            }
+
+            if( _SYMBOL_IS_FUNCTION ) {
+              expect( typeOf(_primitiveSymbol) ).toBe('symbol'),
+              expect( typeOf(_complexSymbol) ).toBe('symbol');
+            }
           }
         );
       }
