@@ -36,9 +36,33 @@ define(
     var
       _ALERT_IS_DEFINED = typeof alert !== 'undefined',
       _NAVIGATOR_IS_OBJECT = typeof navigator === 'object',
+      _OBJECT_HAS_CREATE_METHOD = Object.create === 'function',
       _SYMBOL_IS_FUNCTION = typeof Symbol === 'function',
       _UNDEFINED,
       _complexSymbol,
+      _customArray = function () {
+          var Custom = function Custom () {};
+
+          if( _OBJECT_HAS_CREATE_METHOD ) {
+            Custom.prototype = Object.create(
+                Array.prototype,
+                {
+                  'constructor': {
+                      'value': Custom
+                    }
+                }
+              );
+          } else {
+            Custom.prototype = new Array,
+            Custom.prototype.constructor = Custom;
+          }
+
+          if( !Custom.prototype.hasOwnProperty('length') ) {
+            Custom.prototype.length = 0;
+          }
+
+          return new Custom;
+        }(),
       _customObject = function () {
           var
             Custom = function Custom () {},
@@ -46,7 +70,7 @@ define(
                 return '[object Custom]';
               };
 
-          if( typeof Object.create === 'function') {
+          if( _OBJECT_HAS_CREATE_METHOD ) {
             Custom.prototype = Object.create(
                 null,
                 {
@@ -80,7 +104,9 @@ define(
 
           return noConstruct;
         }(),
-      _objectWithNullAsPrototype = Object.create( null ),
+      _objectWithNullAsPrototype = _OBJECT_HAS_CREATE_METHOD ?
+        Object.create( null ) :
+          {},
       _primitiveSymbol;
 
     if( _SYMBOL_IS_FUNCTION ) {
@@ -223,11 +249,13 @@ define(
             expect( isComplex(arguments) ).toBe( true ),
             expect( isComplex([]) ).toBe( true ),
             expect( isComplex(new Array) ).toBe( true ),
+            expect( isComplex(_customArray) ).toBe( true ),
             expect( isComplex(false) ).toBe( false ),
             expect( isComplex(true) ).toBe( false ),
             expect( isComplex(new Boolean) ).toBe( true ),
             expect( isComplex(new Date) ).toBe( true ),
             expect( isComplex(new Error) ).toBe( true ),
+            expect( isComplex(new TypeError) ).toBe( true ),
             expect( isComplex(function () {}) ).toBe( true ),
             expect( isComplex(new Function) ).toBe( true ),
             expect( isComplex(Number.NEGATIVE_INFINITY) ).toBe( false ),
@@ -283,11 +311,13 @@ define(
             expect( isFunction(arguments) ).toBe( false ),
             expect( isFunction([]) ).toBe( false ),
             expect( isFunction(new Array) ).toBe( false ),
+            expect( isFunction(_customArray) ).toBe( false ),
             expect( isFunction(false) ).toBe( false ),
             expect( isFunction(true) ).toBe( false ),
             expect( isFunction(new Boolean) ).toBe( false ),
             expect( isFunction(new Date) ).toBe( false ),
             expect( isFunction(new Error) ).toBe( false ),
+            expect( isFunction(new TypeError) ).toBe( false ),
             expect( isFunction(function () {}) ).toBe( true ),
             expect( isFunction(new Function) ).toBe( true ),
             expect( isFunction(Number.NEGATIVE_INFINITY) ).toBe( false ),
@@ -343,11 +373,13 @@ define(
             expect( isObject(arguments) ).toBe( false ),
             expect( isObject([]) ).toBe( false ),
             expect( isObject(new Array) ).toBe( false ),
+            expect( isObject(_customArray) ).toBe( true ),
             expect( isObject(false) ).toBe( false ),
             expect( isObject(true) ).toBe( false ),
             expect( isObject(new Boolean) ).toBe( false ),
             expect( isObject(new Date) ).toBe( false ),
             expect( isObject(new Error) ).toBe( false ),
+            expect( isObject(new TypeError) ).toBe( false ),
             expect( isObject(function () {}) ).toBe( false ),
             expect( isObject(new Function) ).toBe( false ),
             expect( isObject(Number.NEGATIVE_INFINITY) ).toBe( false ),
@@ -399,11 +431,13 @@ define(
             expect( isPrimitive(arguments) ).toBe( false ),
             expect( isPrimitive([]) ).toBe( false ),
             expect( isPrimitive(new Array) ).toBe( false ),
+            expect( isPrimitive(_customArray) ).toBe( false ),
             expect( isPrimitive(false) ).toBe( true ),
             expect( isPrimitive(true) ).toBe( true ),
             expect( isPrimitive(new Boolean) ).toBe( false ),
             expect( isPrimitive(new Date) ).toBe( false ),
             expect( isPrimitive(new Error) ).toBe( false ),
+            expect( isPrimitive(new TypeError) ).toBe( false ),
             expect( isPrimitive(function () {}) ).toBe( false ),
             expect( isPrimitive(new Function) ).toBe( false ),
             expect( isPrimitive(Number.NEGATIVE_INFINITY) ).toBe( true ),
@@ -455,11 +489,13 @@ define(
             expect( isRegExp(arguments) ).toBe( false ),
             expect( isRegExp([]) ).toBe( false ),
             expect( isRegExp(new Array) ).toBe( false ),
+            expect( isRegExp(_customArray) ).toBe( false ),
             expect( isRegExp(false) ).toBe( false ),
             expect( isRegExp(true) ).toBe( false ),
             expect( isRegExp(new Boolean) ).toBe( false ),
             expect( isRegExp(new Date) ).toBe( false ),
             expect( isRegExp(new Error) ).toBe( false ),
+            expect( isRegExp(new TypeError) ).toBe( false ),
             expect( isRegExp(function () {}) ).toBe( false ),
             expect( isRegExp(new Function) ).toBe( false ),
             expect( isRegExp(Number.NEGATIVE_INFINITY) ).toBe( false ),
@@ -515,11 +551,13 @@ define(
             expect( isType(arguments, 'arguments') ).toBe( true ),
             expect( isType([], 'array') ).toBe( true ),
             expect( isType(new Array, 'array') ).toBe( true ),
+            expect( isType(_customArray, 'array') ).toBe( false ),
             expect( isType(false, 'boolean') ).toBe( true ),
             expect( isType(true, 'boolean') ).toBe( true ),
             expect( isType(new Boolean, 'boolean') ).toBe( true ),
             expect( isType(new Date, 'date') ).toBe( true ),
             expect( isType(new Error, 'error') ).toBe( true ),
+            expect( isType(new TypeError, 'error') ).toBe( true ),
             expect( isType(function () {}, 'function') ).toBe( true ),
             expect( isType(new Function, 'function') ).toBe( true ),
             expect( isType(Number.NEGATIVE_INFINITY, 'number') ).toBe( true ),
@@ -579,12 +617,13 @@ define(
             expect( typeOf(arguments) ).toBe('arguments'),
             expect( typeOf([]) ).toBe('array'),
             expect( typeOf(new Array) ).toBe('array'),
+            expect( typeOf(_customArray) ).toBe('object'),
             expect( typeOf(false) ).toBe('boolean'),
             expect( typeOf(true) ).toBe('boolean'),
             expect( typeOf(new Boolean) ).toBe('boolean'),
             expect( typeOf(new Date) ).toBe('date'),
             expect( typeOf(new Error) ).toBe('error'),
-            expect( typeOf(new TypeError) ).toBe('error'), // TODO
+            expect( typeOf(new TypeError) ).toBe('error'),
             expect( typeOf(function () {}) ).toBe('function'),
             expect( typeOf(new Function) ).toBe('function'),
             expect( typeOf(Number.NEGATIVE_INFINITY) ).toBe('number'),
