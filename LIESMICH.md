@@ -18,4 +18,14 @@ typeOf( navigator ); // 'object'
 typeof []; // 'object'
 typeOf( [] ); // 'array'
 ```
-Diese Erweiterung liefert außerdem zwei weitere Module: Eine `instanceOf`-Funktion, die den nativen `instanceof`-Operator verbessert, indem sie Vergleiche mit primitiven Werten ermöglicht und ein Speicherleck in älteren Internet Explorer Versionen verhindert.
+Diese Erweiterung liefert außerdem zwei weitere Module: Eine `instanceOf`-Funktion, die den nativen `instanceof`-Operator verbessert, indem sie Vergleiche mit primitiven Werten ermöglicht und ein Speicherleck in älteren Internet Explorer Versionen verhindert, sowie  eine `isComplex`-Funktion die testet, ob Werte einen komplexen (nicht primitiven) Datentyp haben oder nicht:
+```js
+1 instanceof Number; // false
+instanceOf( 1, Number ); // true
+
+// Keine Speicherlecks im IE < 9 bei COM-Objekten:
+instanceOf( window, Object ); // false
+
+isComplex( 1 ); // false
+isComplex( new Number ); // true
+```
