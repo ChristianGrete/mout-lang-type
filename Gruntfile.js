@@ -1,4 +1,5 @@
 const
+  _URL__BANNER_FILE = './config/banner.js',
   _URL__GRUNT_CONFIG_FILE = './config/grunt.json',
   _URL__NPM_MANIFEST_FILE = './package.json';
 
@@ -168,6 +169,7 @@ module.exports = function ( $grunt ) {
                   'src': '<%= cfg.GLOB__JS__RECURSIVE %>'
                 },
               'options': {
+                  'banner': _$grunt__file.read( _URL__BANNER_FILE ),
                   'beautify': {
                       'beautify': true,
                       'indent_level': 2,
