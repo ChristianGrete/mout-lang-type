@@ -45,10 +45,10 @@
     "time-grunt": "^1.2.1"
   },
   "files": [
+    "*.md",
     "dist/**/*.js",
     "lang.js",
-    "lang/{instanceOf,isComplex,isFunction,isObject,isPrimitive,isRegExp,isType,typeOf}.js",
-    "LIESMICH.md"
+    "lang/{instanceOf,isComplex,isFunction,isObject,isPrimitive,isRegExp,isType,typeOf}.js"
   ],
   "homepage": "https://github.com/ChristianGrete/mout-lang-type",
   "keywords": [
