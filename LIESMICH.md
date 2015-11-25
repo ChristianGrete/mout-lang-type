@@ -18,7 +18,7 @@ typeOf( navigator ); // 'object'
 typeof []; // 'object'
 typeOf( [] ); // 'array'
 ```
-Diese Erweiterung liefert außerdem zwei weitere Module: Eine `instanceOf`-Funktion, die den nativen `instanceof`-Operator verbessert, indem sie Vergleiche mit primitiven Werten ermöglicht und ein Speicherleck in älteren Internet Explorer Versionen verhindert, sowie  eine `isComplex`-Funktion die testet, ob Werte einen komplexen (nicht primitiven) Datentyp haben oder nicht:
+Diese Erweiterung liefert außerdem zwei weitere Module: Eine `instanceOf`-Funktion, die den nativen `instanceof`-Operator verbessert, indem sie Vergleiche mit primitiven Werten ermöglicht und ein Speicherleck in älteren Internet Explorer Versionen verhindert sowie eine `isComplex`-Funktion die testet, ob Werte einen komplexen (nicht primitiven) Datentyp haben oder nicht:
 ```js
 1 instanceof Number; // false
 instanceOf( 1, Number ); // true
@@ -28,4 +28,11 @@ instanceOf( window, Object ); // false
 
 isComplex( 1 ); // false
 isComplex( new Number ); // true
+```
+Zu guter Letzt bietet diese Erweiterung einige Ersatzmodule: Eine `isPrimitive`-Funktion mit Unterstützung für ES2015-Symbole sowie die `isFunction`-, `isObject`- und `isRegExp`-Funktionen, die nun intern `isType` anstelle von `isKind` für deren spezifische Typenprüfung verwenden:
+```js
+isFunction( alert ); // true, auch im IE 7
+isObject( window ); // true, ebenfalls
+isPrimitive( Symbol() ); // true
+isRegExp( /^regExp$/i ); // true
 ```
