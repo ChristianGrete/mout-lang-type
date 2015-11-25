@@ -25,7 +25,6 @@
     "config/",
     "docs/",
     "Gruntfile.js",
-    "LIESMICH.md",
     "node_modules/",
     "npm-debug.log",
     "package.json",

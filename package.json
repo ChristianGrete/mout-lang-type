@@ -47,7 +47,8 @@
   "files": [
     "dist/**/*.js",
     "lang.js",
-    "lang/{instanceOf,isComplex,isFunction,isObject,isPrimitive,isRegExp,isType,typeOf}.js"
+    "lang/{instanceOf,isComplex,isFunction,isObject,isPrimitive,isRegExp,isType,typeOf}.js",
+    "LIESMICH.md"
   ],
   "homepage": "https://github.com/ChristianGrete/mout-lang-type",
   "keywords": [
