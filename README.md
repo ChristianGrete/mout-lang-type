@@ -31,7 +31,7 @@ isComplex( new Number ); // true
 ```
 Lastly, this extension provides a bunch of replacement modules: An `isPrimitive` function that adds support for ES2015 symbols and finally the `isFunction`, `isObject` and `isRegExp` functions that internally use `isType` instead of `isKind` for their specific type checks:
 ```js
-isFunction( alert ); // true, even in IE7
+isFunction( alert ); // true, even in IE 7
 isObject( window ); // true, same here
 isPrimitive( Symbol() ); // true
 isRegExp( /^regExp$/i ); // true
