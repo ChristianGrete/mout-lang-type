@@ -1,7 +1,7 @@
 /**
  * @author Christian Grete <webmaster@christiangrete.com>
  * @copyright &copy; 2015 Christian Grete
- * @file Provides the [typeOf]{@link module:mout-lang-type.lang.typeOf} method
+ * @file Provides the [typeOf]{@link module:mout-lang-type.lang.typeOf} utility
  * @license MIT
  * @since 0.0.1
  */

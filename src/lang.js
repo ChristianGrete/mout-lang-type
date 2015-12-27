@@ -14,7 +14,6 @@ define(
      * @author Christian Grete <webmaster@christiangrete.com>
      * @license MIT
      * @namespace {object} module:mout-lang-type.lang
-     * @property {object} GLOBAL References the global object
      * @property {function} instanceOf Checks whether a value is an instance of a constructor
      * @property {function} isComplex Checks whether a value is complex
      * @property {function} isFunction Checks whether a value is a function

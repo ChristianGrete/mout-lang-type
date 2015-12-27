@@ -15,7 +15,6 @@ define(
      * @license MIT
      * @module mout-lang-type
      * @property {object} lang Contains all <code>lang</code> utilities
-     * @property {object} lang.GLOBAL References the global object
      * @property {function} lang.instanceOf Checks whether a value is an instance of a constructor
      * @property {function} lang.isComplex Checks whether a value is complex
      * @property {function} lang.isFunction Checks whether a value is a function
