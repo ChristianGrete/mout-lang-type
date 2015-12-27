@@ -1,8 +1,9 @@
 /**
  * @author Christian Grete <webmaster@christiangrete.com>
  * @copyright &copy; 2015 Christian Grete
- * @file Provides the [typeOf]{@link module:mout-lang-type.lang.typeOf} utility
+ * @file Provides the [typeOf]{@link module:mout-lang-type.lang.typeOf} method
  * @license MIT
+ * @since 0.0.1
  */
 
 // Annotations:
@@ -102,6 +103,7 @@ define(
      * @license MIT
      * @param {mixed} $value The <code>object</code> or <code>primitive</code> whose type is to be returned
      * @returns {string} A <code>string</code> indicating the type of the passed argument
+     * @since 0.0.1
      * @summary Gets the type of a value
      */
 

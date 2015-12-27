@@ -1,8 +1,9 @@
 /**
  * @author Christian Grete <webmaster@christiangrete.com>
  * @copyright &copy; 2015 Christian Grete
- * @file Provides the [instanceOf]{@link module:mout-lang-type.lang.instanceOf} utility
+ * @file Provides the [instanceOf]{@link module:mout-lang-type.lang.instanceOf} method
  * @license MIT
+ * @since 0.5.0
  */
 
 // Annotations:
@@ -22,6 +23,7 @@ define(
      * @param {function} $constructor The <code>function</code> whose prototype property is to be compared against
      * @returns {boolean} A <code>boolean</code> indicating the result of the prototypes comparison
      * @see [MooTools Core <code>instanceOf</code>]{@link https://github.com/mootools/mootools-core/commit/4613cae}
+     * @since 0.5.0
      * @summary Checks whether a value is an instance of a constructor
      */
 

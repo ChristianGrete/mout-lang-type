@@ -3,6 +3,7 @@
  * @copyright &copy; 2015 Christian Grete
  * @file Provides the [mout-lang-type]{@link module:mout-lang-type} module
  * @license MIT
+ * @since 0.0.1
  */
 
 define(
@@ -24,6 +25,7 @@ define(
      * @property {function} lang.isType Checks whether a value is of a type
      * @property {function} lang.typeOf Gets the type of a value
      * @property {string} VERSION Indicates the version number of the module
+     * @since 0.0.1
      */
 
     return {

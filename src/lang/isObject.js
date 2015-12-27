@@ -1,8 +1,9 @@
 /**
  * @author Christian Grete <webmaster@christiangrete.com>
  * @copyright &copy; 2015 Christian Grete
- * @file Provides the [isObject]{@link module:mout-lang-type.lang.isObject} utility
+ * @file Provides the [isObject]{@link module:mout-lang-type.lang.isObject} method
  * @license MIT
+ * @since 0.6.0
  */
 
 define(
@@ -19,6 +20,7 @@ define(
      * @param {mixed} $value The <code>object</code> or <code>primitive</code> whose type is to be checked
      * @requires module:mout-lang-type.lang.isType
      * @returns {boolean} A <code>boolean</code> indicating whether the passed argument is an object
+     * @since 0.6.0
      * @summary Checks whether a value is an object
      */
 

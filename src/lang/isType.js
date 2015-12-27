@@ -1,8 +1,9 @@
 /**
  * @author Christian Grete <webmaster@christiangrete.com>
  * @copyright &copy; 2015 Christian Grete
- * @file Provides the [isType]{@link module:mout-lang-type.lang.isType} utility
+ * @file Provides the [isType]{@link module:mout-lang-type.lang.isType} method
  * @license MIT
+ * @since 0.0.1
  */
 
 define(
@@ -20,6 +21,7 @@ define(
      * @param {string} $type The <code>string</code> indicating the type to be compared against
      * @requires module:mout-lang-type.lang.typeOf
      * @returns {boolean} A <code>boolean</code> indicating the result of the type comparison
+     * @since 0.0.1
      * @summary Checks whether a value is of a type
      */
 
