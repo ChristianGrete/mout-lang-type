@@ -16,6 +16,7 @@
     ".editorconfig",
     ".git/",
     ".gitignore",
+    ".grunt/",
     ".jshintrc",
     ".npmignore",
     ".tm_properties",
