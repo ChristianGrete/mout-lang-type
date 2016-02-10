@@ -38,10 +38,11 @@ define(
       _charAt = _prototype.charAt,
       _retestIfObject,
       _slice = _prototype.slice,
+      _symbolIsFunction = typeof Symbol === 'function',
       _toLowerCase = _prototype.toLowerCase,
       _toString = _conversionObject.toString;
 
-    if( typeof Symbol === 'function')
+    if( _symbolIsFunction )
       _length = _builtInTags.push('Symbol');
 
     while( _length -- ) {
@@ -105,11 +106,20 @@ define(
      * @returns {string} A <code>string</code> indicating the type of the passed argument
      * @since 0.0.1
      * @summary Gets the type of a value
+     * @throws {typeError} Exactly 1 argument <code>$value</code> expected
      */
 
     function typeOf ( $value ) {
       var
+        _length = arguments.length,
         _type;
+
+      if( _length !== 1 )
+        throw TypeError(
+            'Function "typeOf" expects exactly 1 argument "$value", '
+              + _length
+              + ' argument(s) were passed'
+          );
 
       if( $value == null )
         return $value + '';
@@ -136,7 +146,14 @@ define(
 
               ||
 
-              _type
+              (
+                _type === 'object'
+                  && _symbolIsFunction
+                    && $value.constructor === Symbol
+                ?
+                  'symbol' :
+                    _type
+              )
 
               ||
 
