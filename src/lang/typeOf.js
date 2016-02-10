@@ -10,6 +10,7 @@
 //   1. `RegExp` objects are functions in Safari/iOS < 6 and Android < 4
 //   2. `arguments` has no built-in tag in MSIE < 8
 //   3. Functionish host objects have no built-in tags in MSIE < 9
+//   4. `Symbol` values have no built-in tags in some edge cases
 
 define(
   function () {
@@ -38,12 +39,13 @@ define(
       _charAt = _prototype.charAt,
       _retestIfObject,
       _slice = _prototype.slice,
-      _symbolIsFunction = typeof Symbol === 'function',
+      _symbolsHaveNoBuiltInTags = false,
       _toLowerCase = _prototype.toLowerCase,
       _toString = _conversionObject.toString;
 
-    if( _symbolIsFunction )
-      _length = _builtInTags.push('Symbol');
+    if( typeof Symbol === 'function')
+      _length = _builtInTags.push('Symbol'),
+      _symbolsHaveNoBuiltInTags = typeof Symbol.iterator !== 'symbol';
 
     while( _length -- ) {
       _builtInTag = _builtInTags[ _length ],
@@ -147,9 +149,8 @@ define(
               ||
 
               (
-                _type === 'object'
-                  && _symbolIsFunction
-                    && $value.constructor === Symbol
+                _symbolsHaveNoBuiltInTags // 4
+                  && $value.constructor === Symbol
                 ?
                   'symbol' :
                     _type

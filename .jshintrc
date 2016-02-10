@@ -5,6 +5,7 @@
   "-W041": true,
   "-W084": true,
   "-W097": true,
+  "-W122": true,
   "globals": {
     "define": false,
     "require": false,
