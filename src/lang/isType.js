@@ -26,6 +26,10 @@ define(
      */
 
     function isType ( $value, $type ) {
+      // TODO:
+      // if( arguments.length !== 2 ) { throw TypeError(); }
+      // if( typeof $type !== 'string') { throw TypeError(); }
+
       return typeOf( $value ) === $type
     }
 
