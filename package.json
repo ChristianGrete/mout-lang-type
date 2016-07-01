@@ -108,5 +108,8 @@
     "type": "git",
     "url": "git://github.com/ChristianGrete/mout-lang-type.git"
   },
+  "scripts": {
+    "grunt": "grunt"
+  },
   "version": "0.6.0"
 }
