@@ -118,9 +118,9 @@ define(
 
       if( _length !== 1 )
         throw TypeError(
-            'Function "typeOf" expects exactly 1 argument "$value", '
+            'Function `typeOf` expects exactly 1 argument (`$value`). '
               + _length
-              + ' argument(s) were passed'
+              + ' arguments have been passed.'
           );
 
       if( $value == null )
